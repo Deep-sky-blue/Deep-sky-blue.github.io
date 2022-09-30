@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>比较vue和react - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="VUE和react比较单页面应用的发展
+经典的多页面==&amp;gt; 交互方式
+前后端融合在一起，开发和维护效率方式差
+用户体验一般，点击刷新跳转，等待时间长
+每个页面都需要重新加载
+
+
+现代式的单页面,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">比较vue和react</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">比较vue和react</h1>
+        <div class="stuff">
+            <span>八月 09, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="VUE和react比较"><a href="#VUE和react比较" class="headerlink" title="VUE和react比较"></a>VUE和react比较</h2><h4 id="单页面应用的发展"><a href="#单页面应用的发展" class="headerlink" title="单页面应用的发展"></a>单页面应用的发展</h4><ul>
+<li>经典的多页面==&gt; 交互方式<ul>
+<li>前后端融合在一起，开发和维护效率方式差</li>
+<li>用户体验一般，点击刷新跳转，等待时间长</li>
+<li>每个页面都需要重新加载</li>
+</ul>
+</li>
+<li>现代式的单页面==&gt; 所有的交互都是在一个页面，不存在刷新<ul>
+<li>开发方式好，采用前后端分离的开发模式</li>
+<li>服务端不关心界面，只关心数据</li>
+<li>客户端不关心数据库和数据操作，只关心通过接口拿到的数据和服务端交互，处理界面</li>
+<li>用户体验好，就像是原生客户端软件一样，点击刷新跳转，等待时间不长</li>
+<li>只需要加载局部视图即可，不需要整页刷新</li>
+<li>单界面应用开发技术复杂，所以出现了很多框架AngularJS，ReactJS，VueJS，单页面应用被广泛的应用在webapp和管理系统上。</li>
+</ul>
+</li>
+</ul>
+<h4 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h4><p> <a target="_blank" rel="noopener" href="https://cn.vuejs.org/">vue</a>是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/single-file-components.html">现代化的工具链</a>以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;Hello Vue!&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="react"><a href="#react" class="headerlink" title="react"></a>react</h4><p><a target="_blank" rel="noopener" href="https://react.docschina.org/">React</a>是一个帮助构建页面UI的库，相较于MVC框架，只能算是其中的View层。能够帮助我们把页面分割成各个单独独立的小模块，每个小模块就是一个组件，这些组件相互组合、嵌套，就构成了复杂庞大的页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">HelloMessage</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        Hello &#123;this.props.name&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">HelloMessage</span> <span class="attr">name</span>=<span class="string">&quot;Taylor&quot;</span> /&gt;</span></span>,</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;hello-example&#x27;</span>)</span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+<h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><p>从简介上来看，vue和react并没有什么区别，实际上两者的目标也都是能够更加高效的进行web开发，在这方面他们有很多的共同点</p>
+<ol>
+<li>Virtual DOM<br>传统的web开发都是直接通过DOM操作来进行页面的交互改动，而直接上DOM操作。实际上DOM操作对性能的浪费很大，操作DOM节点远比操作对象的消耗更大，因此在react中首先引入了Virtual DOM的概念，实际上就是虚拟DOM使用javascrpt对象模拟DOM元素，如果需要改变任何元素的状态，那么是先在Virtual DOM上进行改变，而不是直接改变真实的DOM。当有变化产生时，一个新的Virtual DOM对象会被创建并计算新旧Virtual DOM之间的差别。之后这些差别会应用在真实的DOM上。 而vue也延续了react虚拟DOM的思想例子如下，我们可以看看下面这个列表在HTML中的代码是如何写的：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&quot;list&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>item 2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+而在JavaScript中，我们可以用对象简单地创造一个针对上面例子的映射：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;ul&#x27;</span>, </span><br><span class="line">    <span class="attr">props</span>: &#123;<span class="string">&#x27;class&#x27;</span>: <span class="string">&#x27;list&#x27;</span>&#125;, </span><br><span class="line">    <span class="attr">children</span>: [</span><br><span class="line">        &#123; <span class="attr">type</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;&#125;, <span class="attr">children</span>: [<span class="string">&#x27;item 1&#x27;</span>] &#125;,</span><br><span class="line">        &#123; <span class="attr">type</span>: <span class="string">&#x27;li&#x27;</span>, <span class="attr">props</span>: &#123;&#125;, <span class="attr">children</span>: [<span class="string">&#x27;item 2&#x27;</span>] &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而能够实现这一思想的核心是<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wind-lanyan/p/9061684.html">diff算法</a>。调用名为 patch 的函数，比较新旧节点。一边比较一边给真实的 DOM 打补丁。patch 函数接收两个参数 oldVnode 和 Vnode，它们分别代表新的节点和之前的旧节点。这个patch函数会比较 oldVnode 和 vnode 是否是相同的, 即函数 sameVnode(oldVnode, vnode), 根据这个函数的返回结果分如下两种情况：true：则执行 patchVnode， false：则用 vnode 替换 oldVnode。</p>
+<ol start="2">
+<li>组件化<br>React与Vue都鼓励组件化应用。这本质上说，是建议你将你的应用分拆成一个个功能明确的模块，每个模块之间可以通过合适的方式互相联系。你可以认为组件就是用户界面中的一小块。例如在一个gm系统中，导航栏是一个组件，tab选项是一个组件，table表格是一个组件。<br>vue中的组件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;<span class="comment">//模板</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span>//组件的根容器</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="comment">//state数据部分</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">components</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">//子组件注册部分</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  methods：&#123;&#125;<span class="comment">//组件中的方法</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">//css样式</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>react中的组件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;<span class="comment">//引入react包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PastaItem</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;<span class="comment">//注册组件</span></span><br><span class="line"><span class="comment">//定义方法和state</span></span><br><span class="line"> <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;<span class="comment">//渲染函数</span></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">//jsx语法糖</span></span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;pasta-dish list-unstyled&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">PastaItem</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>构建工具<br>React和Vue都有自己的构建工具，你可以使用它快速搭建开发环境。React可以使用Create React App (CRA)，而Vue对应的则是vue-cli。两个工具都能让你得到一个根据最佳实践设置的项目模板。 由于CRA有很多选项，使用起来会稍微麻烦一点。这个工具会逼迫你使用Webpack和Babel。而vue-cli则有模板列表可选，能按需创造不同模板，使用起来更灵活一点。 事实上说，两个工具都非常好用，都能建立一个好环境。</li>
+<li>配套框架<br>Vue与React最后一个相似但略有不同之处是它们配套框架的处理方法。相同之处在于，两个框架都专注于UI层，其他的功能如路由、状态管理等都交由同伴框架进行处理。 而不同之处是在于它们如何关联它们各自的配套框架。Vue的核心团队维护着vue-router和vuex，它们都是作为官方推荐的存在。而React的react-router和react-redux则是由社区成员维护，它们都不是官方维护的。<h4 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h4></li>
+<li>模板 vs <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3345e94baec0">JSX</a><br>React与Vue最大的不同是模板的编写。Vue鼓励你去写近似常规HTML的模板。写起来很接近标准HTML元素，只是多了一些属性。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">&quot;item in items&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; item.msg &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;divider&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p> Vue鼓励你去使用HTML模板去进行渲染，通过把原有的模板整合成新的Vue模板，Vue很容易提供旧的应用的升级。这也让新来者很容易适应它的语法。 另一方面，React推荐你所有的模板通用JavaScript的语法扩展——JSX书写。同样的代码，用JSX书写的例子如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul className=<span class="string">&quot;pasta-list&quot;</span>&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">keys</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">pastadishes</span>).<span class="title function_">map</span>(<span class="function"><span class="params">key</span> =&gt;</span></span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">PastaItem</span> <span class="attr">index</span>=<span class="string">&#123;key&#125;</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span> <span class="attr">details</span>=<span class="string">&#123;this.state.pastadishes[key]&#125;</span> <span class="attr">addToOrder</span>=<span class="string">&#123;this.addToOrder&#125;</span> <span class="attr">orders</span>=<span class="string">&#123;this.state.orders[key]&#125;</span> /&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>状态管理 vs 对象属性<br>应用中的状态是React关键的概念。也有一些配套框架被设计为管理一个大的state对象，如Redux。此外，state对象在React应用中是不可变的，意味着它不能被直接改变。在React中你需要使用setState()方法去更新状态。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">addToOrder</span>(<span class="params">key</span>) &#123;</span><br><span class="line">       <span class="comment">//Make a copy of this.state</span></span><br><span class="line">       <span class="keyword">const</span> orders = &#123; ...<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">orders</span> &#125;;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//update or add</span></span><br><span class="line">       orders[ key ] = orders[ key ] + <span class="number">1</span> || <span class="number">1</span>;</span><br><span class="line">       <span class="variable language_">this</span>.<span class="title function_">setState</span>( &#123; orders &#125; );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Vue中，state对象并不是必须的，数据由data属性在Vue对象中进行管理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;app&#x27;</span>,</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">samplePasta</span>: samplePasta,</span><br><span class="line">      <span class="attr">orders</span>: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="attr">handleOrder</span>: <span class="keyword">function</span> (<span class="params">key</span>) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">orders</span>.<span class="title function_">hasOwnProperty</span>(key)) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.$set(<span class="variable language_">this</span>.<span class="property">orders</span>, key, &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">orders</span>[key].<span class="property">count</span> += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>类组件vs声明式组件</li>
+</ol>
+<p>vue是声明式的写法，通过传入各种options，api和参数都很多。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;button-counter&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">template</span>: <span class="string">&#x27;&lt;button v-on:click=&quot;count++&quot;&gt;You clicked me &#123;&#123; count &#125;&#125; times.&lt;/button&gt;&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>而react则是通过es6的class构建组件，基本没有框架自定义的api，你只要了解class，就能完成组件的编写。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;<span class="comment">//引入react包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PastaItem</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;<span class="comment">//注册组件</span></span><br><span class="line"><span class="comment">//定义方法和state</span></span><br><span class="line"> <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;<span class="comment">//渲染函数</span></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">//jsx语法糖</span></span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;pasta-dish list-unstyled&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">PastaItem</span>;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>模板vs all in js<br>Vue组件实现为一个有模板（template）、有数据（props）的对象， React组件则实现为一个输入数据（props）、输出html片段（JSX）的函数。这是两者之间核心思想的区别，是html为主导还是js为主导，vue的模板思想倾向于传统的web开发，以html为主导，先搭建完整的页面，再由js作为辅助工具，完成页面的逻辑和交互。而在react的all in js思想中，则认为js为主导，react提倡函数式编程，将html视为数据映射的结果。一个数据映射出一个html片段，所有的html片段拼起来，就形成了完整的页面DOM树。当然，React组件一般是class形式，但只是为了更好地操作数据，最终render函数会完成映射这一步。从这一点看vue的设计理念是为了让开发者更舒服，没有改变原有的开发思想，只是提供了让开发更加高效和简洁的工具，而react则是想颠覆js服务html的开发逻辑，让js成为主导，从而使前端开发逻辑更加严谨，更加灵活。</li>
+</ol>
+<h2 id="浅谈vue和react的发展"><a href="#浅谈vue和react的发展" class="headerlink" title="浅谈vue和react的发展"></a>浅谈vue和react的发展</h2><p> 实际上vue和react虽然核心思想的侧重点不同，但是二者的目标都是使前端开发脱离频繁的dom操作，工程化，模块化。前端开发在组件化时代最大的问题就是如何优雅的实现组件的复用，当一个组件业务较多，数据量大的时候，虽然两个组件可能存在一定的相似性，但很难实现复用。在组件复用的道路上两者都经历了Mixin -&gt; Hoc（Vue 比较少用）-&gt; render prop（Vue 有类似思想的实现为 slot） -&gt; hooks（Vue3.0 function based API。而在数据流上两者也向着同一个方向发展，最开始的vue数据流是双向的，后来除了双向绑定的数据也接受了react的单向数据流思想，单向数据流的概念就好比是人和影子，人的改变可以带动影子的改变，但是影子不能主动改变带动人的变化，这对数据的一致性来讲是很关键的。vue和react在发展优化的过程中，逐渐的统一了某些思想。我认为在之后的持续发展中，二者会更加相似，会互相学习最终会出现一个相对完美的框架，引领前端革命。</p>
+<h2 id="优劣势对比"><a href="#优劣势对比" class="headerlink" title="优劣势对比"></a>优劣势对比</h2><p>总的来说我认为在实际的开发中vue有以下几点优势</p>
+<ul>
+<li>渐进式，可以向上兼容和向下兼容</li>
+<li>模板完善，大部分时候你只需要关心数据的变化，开发难度低，工作量小</li>
+<li>更小的体积更快的速度，vue打包之后的文件很小，加之双向绑定更新数据的模式，使得加载更快性能更佳（实际上react的ui组件一般都是按需引入，打包体积会小一点，vue一般是全局引入，加上像router，vuex，redux，之类的库，最终的打包文件还是以项目需求为准）</li>
+</ul>
+<p>同样vue也有一些劣势</p>
+<ul>
+<li>因为模板的局限性，过于复杂的业务场景实现起来就显得有点笨重，不够灵活。</li>
+<li>双向绑定的局限性，当数据量过大的时候过多的watch双向绑定会导致页面卡顿。我做过一个测试，在10W条表格数据切换时会有轻微卡顿，100w条时卡顿就十分明显了（此条在vue3.0的测试下没有问题，因为vue3.0更换了双向绑定的逻辑，从es5的object.defineproperty()变成了es6的proxy）</li>
+</ul>
+<p>相比之下react的优势是</p>
+<ul>
+<li>灵活的语法，没有模板和过多的api，从业务到渲染全部通过js完成，面对复杂业务就显得很从容。也会减轻debug和测试的难度</li>
+<li>对于大量的数据，虽然操作起来繁琐，但是不会影响页面性能。</li>
+<li>hook让组件的业务逻辑更清晰明了，便于组件的管理，脱离面相生命周期编程（vue3.0的setup有类似的实现···）</li>
+</ul>
+<p>劣势</p>
+<ul>
+<li>过于灵活的语法对开发者要求很高，很容易让整个项目显得杂乱。难以维护</li>
+<li>react的api很少，大部分的功能业务事件都需要自己去完成，工作量大。<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>我个人感觉写vue的话像是在完成任务，就像你需要一个能用的东西就行，vue就是一个完美的选择，优秀的模板，完善的文档api会让你开发效率很高。而react的话像是在创造，all in js 的理念颠覆了前端的概念，也可能是未来前端的趋势，vue的作者尤雨溪也提到如果多年以后要论历史地位，react 肯定是高于 ue 的。vue的定位一开始就是服务开发者，让开发者的工作更简单。而react的定位是提出 UI 开发的新思路，要改变前端开发的传统模式。所以我觉得就技术层面而言两者对于业务的实现性能等方面并没有太大的区别，只能说两者发展方向不同，vue想做优秀的工具，react则是想改变业界，前端革命。</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#VUE%E5%92%8Creact%E6%AF%94%E8%BE%83"><span class="toc-number">1.</span> <span class="toc-text">VUE和react比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">1.0.1.</span> <span class="toc-text">单页面应用的发展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vue"><span class="toc-number">1.0.2.</span> <span class="toc-text">vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#react"><span class="toc-number">1.0.3.</span> <span class="toc-text">react</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%90%8C%E7%82%B9"><span class="toc-number">1.0.4.</span> <span class="toc-text">相同点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="toc-number">1.0.5.</span> <span class="toc-text">不同点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%85%E8%B0%88vue%E5%92%8Creact%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">2.</span> <span class="toc-text">浅谈vue和react的发展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8A%A3%E5%8A%BF%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">优劣势对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

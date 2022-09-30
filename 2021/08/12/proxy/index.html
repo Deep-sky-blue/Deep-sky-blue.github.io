@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>proxy和Reflect - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="  vue3.0在双向绑定上做了优化，从Object.defineproperty换成了proxy。这样解决了之前对与数组中某个属性的新增和删除无法监听，计算量大，影响新能，深度监听操作复杂等问题。,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">proxy和Reflect</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">proxy和Reflect</h1>
+        <div class="stuff">
+            <span>八月 12, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>  vue3.0在双向绑定上做了优化，从Object.defineproperty换成了proxy。这样解决了之前对与数组中某个属性的新增和删除无法监听，计算量大，影响新能，深度监听操作复杂等问题。<br>proxy:顾名思义代理，让我们访问对象的时候不需要直接访问对象地址，而是由proxy替我们完成。它可以劫持整个对象，并且返回一个新的对象。这里我去百度了一下代理模式和mdn对proxy的解释。</p>
+<ul>
+<li>什么是代理模式<br>代理模式（英语：Proxy Pattern）是程序设计中的一种设计模式。<br>所谓的代理者是指一个类别可以作为其它东西的接口。代理者可以作任何东西的接口：网络连接、内存中的大对象、文件或其它昂贵或无法复制的资源。<br>著名的代理模式例子为引用计数（英语：reference counting）指针对象。<br>当一个复杂对象的多份副本须存在时，代理模式可以结合享元模式以减少内存用量。典型作法是创建一个复杂对象及多个代理者，每个代理者会引用到原本的复杂对象。而作用在代理者的运算会转送到原本对象。一旦所有的代理者都不存在时，复杂对象会被移除。</li>
+<li>什么是proxy对象<br>Proxy 对象用于定义基本操作的自定义行为（如属性查找，赋值，枚举，函数调用等）。<br>简单来说:Proxy对象就是可以让你去对JavaScript中的一切合法对象的基本操作进行自定义.然后用你自定义的操作去覆盖其对象的基本操作.也就是当一个对象去执行一个基本操作时,其执行的过程和结果是你自定义的,而不是对象的.<br>proxy的基本使用：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> handler = &#123;</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span>(<span class="params">target, name</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> name <span class="keyword">in</span> target ? target[name] : <span class="string">&#x27;No prop!&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="title class_">Proxy</span>(&#123;&#125;, handler);</span><br><span class="line">p.<span class="property">a</span> = <span class="number">1</span>;</span><br><span class="line">p.<span class="property">b</span> = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">a</span>);    <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">b</span>);    <span class="comment">//2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">c</span>);    <span class="comment">//No prop!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+其中hander的回调函数共有13种拦截</li>
+<li>getPrototypeOf(可以拦截取对象的原型对象的行为)</li>
+<li>setPrototypeOf(可以拦截变更对象的原型对象的行为)</li>
+<li>isExtensible(可以拦截判断对象是否可扩展（即是否能追加新属性）的行为)</li>
+<li>preventExtensions(可以拦截阻止对象被扩展（即不能为对象增加新属性，但是既有属性的值仍然可以更改，也可以把属性删除）的行为：)</li>
+<li>ownKeys (可以拦截获取属性名的行为)</li>
+<li>getOwnPropertyDescriptor(可以拦截获取自身属性描述的行为)</li>
+<li>defineProperty (可以拦截定义属性的行为)</li>
+<li>deleteProperty(可以拦截delete行为)</li>
+<li>get(可以拦截读取对象属性值的行为)</li>
+<li>set (可以拦截修改对象属性值的行为)</li>
+<li>has(可以拦截检查是否含有该参数的行为)</li>
+<li>apply (以拦截函数调用的行为，包括apply调用，call调用)</li>
+<li>construct(可以拦截new命令)</li>
+</ul>
+<h2 id="Proxy-revocable"><a href="#Proxy-revocable" class="headerlink" title="Proxy.revocable()"></a>Proxy.revocable()</h2><p> Proxy自身还有个静态方法Proxy.revocable(target, handler)，用于创建并返回一个可取消的Proxy对象。返回的这个可取消的Proxy对象有两个属性：proxy和revoke</p>
+<p>属性proxy会调用new Proxy(target, handler)创建一个新的Proxy对象。属性revoke是一个无参函数，用于取消，即让该Proxy对象无效。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> revocable = <span class="title class_">Proxy</span>.<span class="title function_">revocable</span>(&#123;&#125;, &#123;</span><br><span class="line">    <span class="attr">get</span>: <span class="keyword">function</span>(<span class="params">target, name</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;[[&quot;</span> + name + <span class="string">&quot;]]&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> p = revocable.<span class="property">proxy</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">foo</span>); <span class="comment">// &quot;[[foo]]&quot;</span></span><br><span class="line"></span><br><span class="line">revocable.<span class="title function_">revoke</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">foo</span>);  <span class="comment">//TypeError: illegal operation attempted on a revoked proxy</span></span><br><span class="line">p.<span class="property">foo</span> = <span class="number">1</span>;           <span class="comment">//TypeError: illegal operation attempted on a revoked proxy</span></span><br><span class="line"><span class="keyword">delete</span> p.<span class="property">foo</span>;        <span class="comment">//TypeError: illegal operation attempted on a revoked proxy</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> p); <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+<p>示例中Proxy.revocable方法返回一个可取消的Proxy对象。调用该对象的proxy属性得到真实的Proxy对象。如果不想用了，可以调用revoke()方法将该Proxy对象无效化。之后对Proxy对象的任何操作都将抛出异常。</p>
+<h2 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h2><p>Reflect 是一个内置的对象，它提供拦截 JavaScript 操作的方法。这些方法与proxy handlers (en-US)的方法相同。Reflect不是一个函数对象，因此它是不可构造的。Reflect对象一共有 13 个静态方法与proxy相同。若需要在Proxy内部调用对象的默认行为，使用Reflect</p>
+<ul>
+<li>只要Proxy对象具有的代理方法，Reflect对象全部具有，以静态方法的形式存在。这些方法能够执行默认行为，无论Proxy怎么修改默认行为，总是可以通过Reflect对应的方法获取默认行为。</li>
+<li>修改某些Object方法的返回结果，让其变得更合理。比如，Object.defineProperty(obj, name, desc)在无法定义属性时，会抛出一个错误，而Reflect.defineProperty(obj, name, desc)则会返回false。</li>
+<li>让Object操作都变成函数行为。某些Object操作是命令式，比如name in obj和delete obj name，而Reflect.has(obj, name)和Reflect.deleteProperty(obj, name)让它们变成了函数行为</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f0f8ae715f9b">https://www.jianshu.com/p/f0f8ae715f9b</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Proxy-revocable"><span class="toc-number">1.</span> <span class="toc-text">Proxy.revocable()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reflect"><span class="toc-number">2.</span> <span class="toc-text">Reflect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

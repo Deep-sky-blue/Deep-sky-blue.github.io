@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>华为OD面试 - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="一面机试三道题
+100个人围成一个圈，输入一个树报数，报到该数字的人退出，球最后剩下的人的编号。约瑟夫环
+给定一串不等式的输入，求不等式是否成立，如不成立输出不等式的最大值。
+给定一串服务之间的依赖,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">华为OD面试</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">华为OD面试</h1>
+        <div class="stuff">
+            <span>十一月 29, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="一面机试三道题"><a href="#一面机试三道题" class="headerlink" title="一面机试三道题"></a>一面机试三道题</h2><ol>
+<li>100个人围成一个圈，输入一个树报数，报到该数字的人退出，球最后剩下的人的编号。约瑟夫环</li>
+<li>给定一串不等式的输入，求不等式是否成立，如不成立输出不等式的最大值。</li>
+<li>给定一串服务之间的依赖关系以及服务总数，求当其中某些服务出问题之后，哪些服务依旧能正常运行</li>
+</ol>
+<h2 id="二面性格测试"><a href="#二面性格测试" class="headerlink" title="二面性格测试"></a>二面性格测试</h2><h2 id="三面技术"><a href="#三面技术" class="headerlink" title="三面技术"></a>三面技术</h2><ol>
+<li>笔试题，将一组字符串按照其中字符出现的次数降序排序。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编码题目：</span></span><br><span class="line"><span class="comment">// 给定一个字符串，请将字符串里的字符按照出现的频率降序排列。</span></span><br><span class="line"><span class="comment">// 示例 1:</span></span><br><span class="line"><span class="comment">// 输入: &quot;tree&quot;，输出: &quot;eert&quot;</span></span><br><span class="line"><span class="comment">// 解释: &#x27;e&#x27;出现两次，&#x27;r&#x27;和&#x27;t&#x27;都只出现一次。因此&#x27;e&#x27;必须出现在&#x27;r&#x27;和&#x27;t&#x27;之前。此外，&quot;eetr&quot;也是一个有效的答案。</span></span><br><span class="line"><span class="comment">// 示例 2:</span></span><br><span class="line"><span class="comment">// 输入:&quot;cccaaa&quot;，输出:&quot;cccaaa&quot;</span></span><br><span class="line"><span class="comment">// 解释:&#x27;c&#x27;和&#x27;a&#x27;都出现三次。此外，&quot;aaaccc&quot;也是有效的答案。注意&quot;cacaca&quot;是不正确的，因为相同的字母必须放在一起。</span></span><br><span class="line"><span class="comment">// 示例 3:</span></span><br><span class="line"><span class="comment">// 输入:&quot;Aabb&quot;，输出:&quot;bbAa&quot;</span></span><br><span class="line"><span class="comment">// 解释:此外，&quot;bbaA&quot;也是一个有效的答案，但&quot;Aabb&quot;是不正确的。注意&#x27;A&#x27;和&#x27;a&#x27;被认为是两种不同的字符。</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sortstr</span>(<span class="params">str</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> arr = str.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> obj = &#123;&#125;</span><br><span class="line">    <span class="keyword">let</span> arr1 = []</span><br><span class="line">    <span class="keyword">let</span> newstr = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    arr.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj[item]) &#123;</span><br><span class="line">            obj[item] += <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            obj[item] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        arr1.<span class="title function_">push</span>([item, obj[item]])</span><br><span class="line">    &#125;)</span><br><span class="line">    arr1.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> b[<span class="number">1</span>] - a[<span class="number">1</span>]</span><br><span class="line">    &#125;)</span><br><span class="line">    arr1.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; item[<span class="number">1</span>]; i++) &#123;</span><br><span class="line">            newstr += item[<span class="number">0</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> newstr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sortstr</span>(<span class="string">&#x27;cccaaa&#x27;</span>), <span class="title function_">sortstr</span>(<span class="string">&#x27;tree&#x27;</span>), <span class="title function_">sortstr</span>(<span class="string">&#x27;Aabb&#x27;</span>))</span><br></pre></td></tr></table></figure></li>
+<li>闭包的使用场景。</li>
+<li>遇到过什么问题，怎么解决的。</li>
+<li>是怎样接触到前端的，是怎么学习的。</li>
+<li>一些简单的技术问题，记不清了</li>
+</ol>
+<h2 id="四面技术"><a href="#四面技术" class="headerlink" title="四面技术"></a>四面技术</h2><ol>
+<li>笔试题，将一个数组向前移动一位，第一位到最后一位，输入一个number参数，决定执行多少次。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">changeArr</span>(<span class="params">arr,key</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> length=arr.<span class="property">length</span></span><br><span class="line">  <span class="keyword">let</span> time= key%length</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;time;i++)&#123;</span><br><span class="line">     arr.<span class="title function_">pop</span>()</span><br><span class="line">     arr.<span class="title function_">unshift</span>(target)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">changeArr</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],<span class="number">10002</span>))</span><br></pre></td></tr></table></figure></li>
+<li>一样的遇到过什么问题，怎么解决的。</li>
+<li>作用域链。</li>
+<li>用到过的去重方法。</li>
+<li>vue router的原理。</li>
+<li>ts的泛型。public和privite的区别。</li>
+<li>es6的proxy</li>
+<li>es6的Object.keys和es的for in有什么区别</li>
+<li>深浅拷贝，json方法有什么缺点</li>
+</ol>
+<h2 id="五面主管"><a href="#五面主管" class="headerlink" title="五面主管"></a>五面主管</h2><ol>
+<li>你认为这份工作对你意味着什么</li>
+<li>你对自己怎么评价</li>
+</ol>
+<h2 id="六面HR面"><a href="#六面HR面" class="headerlink" title="六面HR面"></a>六面HR面</h2>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%9D%A2%E6%9C%BA%E8%AF%95%E4%B8%89%E9%81%93%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">一面机试三道题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E9%9D%A2%E6%80%A7%E6%A0%BC%E6%B5%8B%E8%AF%95"><span class="toc-number">2.</span> <span class="toc-text">二面性格测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E9%9D%A2%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">三面技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E9%9D%A2%E6%8A%80%E6%9C%AF"><span class="toc-number">4.</span> <span class="toc-text">四面技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E9%9D%A2%E4%B8%BB%E7%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">五面主管</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E9%9D%A2HR%E9%9D%A2"><span class="toc-number">6.</span> <span class="toc-text">六面HR面</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

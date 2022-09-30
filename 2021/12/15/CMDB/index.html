@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>理解什么是CMDB - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="什么是 CMDBCMDB 是 Configuration Management Database 的简称，中文翻译成配置管理数据库,是一个逻辑数据库，包含了配置项全生命周期及配置项之间的关系（物理关,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">理解什么是CMDB</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">理解什么是CMDB</h1>
+        <div class="stuff">
+            <span>十二月 15, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="什么是-CMDB"><a href="#什么是-CMDB" class="headerlink" title="什么是 CMDB"></a>什么是 CMDB</h2><p>CMDB 是 Configuration Management Database 的简称，中文翻译成配置管理数据库,是一个逻辑数据库，包含了配置项全生命周期及配置项之间的关系（物理关系，时事通讯关系，非实时通讯关系，依赖关系）</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>主要是存储企业 IT 架构的中设备的各种配置信息，支持服务流程的运转，发挥配置信息的价值。有了配置信息的基础，后续的各种标准，流程都可以建立在 CMDB 的基础上，实现标准化，自动化，智能运维，节约时间成本和传统运维失误的风险。</p>
+<h2 id="最终目的"><a href="#最终目的" class="headerlink" title="最终目的"></a>最终目的</h2><ol>
+<li>项目上线<br> 需要实现一个自动化部署项目的工具，不是简单的 shell 脚本，包括服务器的 ip，cpu,硬盘等都需要考虑，这些就需要 CMDB 作为基础</li>
+<li>监控系统<br> 检测服务器运行期间的各种状态，硬盘是否满，cpu 使用率，内存使用率，服务运行状态，是否需要新增或者移除服务器，避免过载或者资源浪费</li>
+<li>服务器自动部署，自动装机配置环境<br> 减少运维重复的工作并且提高可靠性，也需要 CMDB 作为基础服务</li>
+</ol>
+<h2 id="CMDB-系统的组成"><a href="#CMDB-系统的组成" class="headerlink" title="CMDB 系统的组成"></a>CMDB 系统的组成</h2><p>1 用户管理，记录测试，开发，运维人员的用户表</p>
+<p>2：业务线管理，需要记录业务的详情</p>
+<p>3：项目管理，指定此项目需属于那条业务线，以及项目详情</p>
+<p>4：应用管理，指定此应用的开发人员，属于哪个项目，和代码地址，部署目录，部署集群，依赖的应用，软件等信息。</p>
+<p>5：主机管理，包括云主机，物理机，主机属于哪个集群，运行着哪些软件，主机管理员，连接着哪些网络设备，云主机的资源地，存储等相关信息。</p>
+<p>6：主机变更管理，主机的一些信息变更，例如管理员，所属集群等信息更改，连接的网络变更等。</p>
+<p>7：网络设备管理，主要记录网络设备的详细信息，及网络设备连接的上级设备</p>
+<p>8：IP 管理，IP 属于哪个主机，哪个网段，是否被占用等</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-CMDB"><span class="toc-number">1.</span> <span class="toc-text">什么是 CMDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%9B%AE%E7%9A%84"><span class="toc-number">3.</span> <span class="toc-text">最终目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CMDB-%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">CMDB 系统的组成</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

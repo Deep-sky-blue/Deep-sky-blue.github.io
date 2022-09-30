@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>golang结构体 - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="定义
+golang 中没有类的概念，所以使用结构体来达到面向对象的目的。类似于 typescript 的 interfece，golang 为强类型语言，每个值的引用，函数的参数及返回值都必须定义结,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">golang结构体</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">golang结构体</h1>
+        <div class="stuff">
+            <span>九月 26, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>golang 中没有类的概念，所以使用结构体来达到面向对象的目的。类似于 typescript 的 interfece，golang 为强类型语言，每个值的引用，函数的参数及返回值都必须定义结构体规范数据类型。</li>
+<li>成员变量：golang 中没有 public 和 private 关键字，定义私有变量和公共变量的方法是首字母的大小写区分</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Hour <span class="type">int</span>    <span class="comment">//公共变量</span></span><br><span class="line">    minute <span class="type">int</span>  <span class="comment">//私有变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体的使用流程"><a href="#结构体的使用流程" class="headerlink" title="结构体的使用流程"></a>结构体的使用流程</h2><ul>
+<li>定义结构体</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基本实例化</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> h1 house</span><br><span class="line">h1.size = <span class="number">130</span></span><br><span class="line">h1.style = <span class="string">&quot;中国风&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, h1) <span class="comment">// &#123;130 0 中国风&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v&quot;</span>, h1)  <span class="comment">// main.house&#123;size:130, price:0, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">fmt.Println(h1.size)   <span class="comment">// 130</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>匿名的结构体（匿名的结构体可以定义临时结构体）<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> family <span class="keyword">struct</span> &#123;</span><br><span class="line">	Mom <span class="type">string</span></span><br><span class="line">	Dad <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line">family.Mom = <span class="string">&quot;Mommy&quot;</span></span><br><span class="line">family.Dad = <span class="string">&quot;Daddy&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, family)  <span class="comment">// &#123;Mommy Daddy&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, family) <span class="comment">// struct &#123; Mom string; Dad string &#125;&#123;Mom:&quot;Mommy&quot;, Dad:&quot;Daddy&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>结构体指针<br>使用new关键字<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p1 := <span class="built_in">new</span>(house)</span><br><span class="line">p1.style = <span class="string">&quot;欧式&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;欧式&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+使用地址符&amp;<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p2 := &amp;house&#123;&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, p2)  <span class="comment">// *main.house</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p2) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>构造函数<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style       <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 返回结构体指针</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newHouse</span><span class="params">(size, price <span class="type">float64</span>, style <span class="type">string</span>)</span></span> *house &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;house&#123;</span><br><span class="line">		size:  size,</span><br><span class="line">		price: price,</span><br><span class="line">		style: style,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := newHouse(<span class="number">100</span>, <span class="number">80</span>, <span class="string">&quot;中国风&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:100, price:80, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="golang的指针-amp-和"><a href="#golang的指针-amp-和" class="headerlink" title="golang的指针 &amp;和*"></a>golang的指针 &amp;和*</h2>经常会见到: p . <em>p , &amp;p 三个符号<br>p是一个指针变量的名字，表示此指针变量指向的内存地址，如果使用%p来输出的话，它将是一个16进制数。而</em>p表示此指针指向的内存地址中存放的内容，一般是一个和指针类型一致的变量或者常量。<br>而我们知道，&amp;是取地址运算符，&amp;p就是取指针p的地址。等会，怎么又来了个地址，它到底和p有什么区别？区别在于，指针p同时也是个变量，既然是变量，编译器肯定要为其分配内存地址，就像程序中定义了一个int型的变量i，编译器要为其分配一块内存空间一样。而&amp;p就表示编译器为变量p分配的内存地址，而因为p是一个指针变量，这种特殊的身份注定了它要指向另外一个内存地址，程序员按照程序的需要让它指向一个内存地址，这个它指向的内存地址就用p表示。而且，p指向的地址中的内容就用*p表示。</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">结构体的使用流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E7%9A%84%E6%8C%87%E9%92%88-amp-%E5%92%8C"><span class="toc-number">3.</span> <span class="toc-text">golang的指针 &amp;和*</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

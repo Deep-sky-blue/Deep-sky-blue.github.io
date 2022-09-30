@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>antv g2 plot 动态生成报表设计方案 - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="目标目标实现一个大数据统计平台，最终目标是实现一个动态报表，可以选择图表类型，拖拽缩放，自定义布局。可视化操作数据报表，类似阿里云后台的数据管理系统。
+开源技术选择
+可视化图表的选择，比较了echa,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">antv g2 plot 动态生成报表设计方案</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">antv g2 plot 动态生成报表设计方案</h1>
+        <div class="stuff">
+            <span>八月 16, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>目标实现一个大数据统计平台，最终目标是实现一个动态报表，可以选择图表类型，拖拽缩放，自定义布局。可视化操作数据报表，类似阿里云后台的数据管理系统。</p>
+<h2 id="开源技术选择"><a href="#开源技术选择" class="headerlink" title="开源技术选择"></a>开源技术选择</h2><ul>
+<li>可视化图表的选择，比较了echart，chart.js，antvg2。觉得antv的文档更加友善。开发效率更  好。测试过数据量，10000条数据的柱形图性能影响极小，所以选择antvg2为可视化图表库。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install @antv/g2</span><br><span class="line">$ yarn add @antv/g2</span><br></pre></td></tr></table></figure></li>
+<li>要实现可视化自定义报表，缩放，拖拽都是必要的，比起自己造轮子有成熟的插件效率更高就没有选择自己写，因为项目的技术栈是vue3.0+ts，所以选择使用<a target="_blank" rel="noopener" href="https://github.com/a7650/vue3-draggable-resizable">Vue3DraggableResizable</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue3-draggable-resizable</span><br><span class="line">$ yarn add vue3-draggable-resizable</span><br></pre></td></tr></table></figure>
+<h2 id="测试功能"><a href="#测试功能" class="headerlink" title="测试功能"></a>测试功能</h2></li>
+<li>使用antvg2plot<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Vue3DraggableResizable</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:initW</span>=<span class="string">&quot;150&quot;</span> <span class="attr">:initH</span>=<span class="string">&quot;150&quot;</span></span></span><br><span class="line"><span class="tag">   <span class="attr">v-model:x</span>=<span class="string">&quot;dadad.x&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-model:y</span>=<span class="string">&quot;dadad.y&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">v-model:w</span>=<span class="string">&quot;dadad.w&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">v-model:h</span>=<span class="string">&quot;dadad.h&quot;</span></span></span><br><span class="line"><span class="tag">       <span class="attr">v-model:active</span>=<span class="string">&quot;dadad.active&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:draggable</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">:resizable</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:parent</span>=<span class="string">&quot;true&quot;</span></span></span><br><span class="line"><span class="tag">          @<span class="attr">resizing</span>=<span class="string">&#x27;resizeStartHandle&#x27;</span></span></span><br><span class="line"><span class="tag">  &gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container1&quot;</span> <span class="attr">:style</span>=<span class="string">&quot;&#123;width: + dadad.w+ &#x27;px&#x27;,height:+dadad.h+&#x27;px&#x27;&#125;&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">Vue3DraggableResizable</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Select</span> <span class="attr">style</span>=<span class="string">&quot;width: 120px&quot;</span> <span class="attr">:options</span>=<span class="string">&quot;chartdata&quot;</span> @<span class="attr">change</span>=<span class="string">&quot;change&quot;</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">Select</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue3DraggableResizable</span> <span class="keyword">from</span> <span class="string">&#x27;vue3-draggable-resizable&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;vue3-draggable-resizable/dist/Vue3DraggableResizable.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Line</span>,<span class="title class_">Column</span>,<span class="title class_">Bar</span>,<span class="title class_">Pie</span>  &#125; <span class="keyword">from</span> <span class="string">&#x27;@antv/g2plot&#x27;</span>;</span><br><span class="line"> <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="comment">//定义拖动数据</span></span><br><span class="line">    <span class="keyword">var</span> movedata =<span class="title function_">reactive</span>(&#123;</span><br><span class="line">      <span class="attr">x</span>: <span class="number">100</span>,</span><br><span class="line">      <span class="attr">y</span>: <span class="number">100</span>,</span><br><span class="line">      <span class="attr">h</span>: <span class="number">100</span>,</span><br><span class="line">      <span class="attr">w</span>: <span class="number">100</span>,</span><br><span class="line">      <span class="attr">active</span>: <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//图表数据</span></span><br><span class="line">    <span class="keyword">var</span> data = [</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;1&#x27;</span>, <span class="attr">value</span>: <span class="number">3</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;2&#x27;</span>, <span class="attr">value</span>: <span class="number">4</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;3&#x27;</span>, <span class="attr">value</span>: <span class="number">3.5</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;4&#x27;</span>, <span class="attr">value</span>: <span class="number">5</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;5&#x27;</span>, <span class="attr">value</span>: <span class="number">4.9</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;6&#x27;</span>, <span class="attr">value</span>: <span class="number">6</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;7&#x27;</span>, <span class="attr">value</span>: <span class="number">7</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;8&#x27;</span>, <span class="attr">value</span>: <span class="number">9</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;9&#x27;</span>, <span class="attr">value</span>: <span class="number">13</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;10&#x27;</span>, <span class="attr">value</span>: <span class="number">53</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;11&#x27;</span>, <span class="attr">value</span>: <span class="number">13</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">month</span>: <span class="string">&#x27;12&#x27;</span>, <span class="attr">value</span>: <span class="number">123</span> &#125;,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="comment">//切换图表select数据</span></span><br><span class="line">    <span class="keyword">const</span> chartdata=[</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">value</span>:<span class="title class_">Line</span>,</span><br><span class="line">        <span class="attr">label</span>:<span class="string">&quot;折线&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">value</span>:<span class="title class_">Column</span>,</span><br><span class="line">        <span class="attr">label</span>:<span class="string">&quot;柱状图&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">value</span>:<span class="title class_">Bar</span>,</span><br><span class="line">        <span class="attr">label</span>:<span class="string">&quot;条形图&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">value</span>: <span class="title class_">Pie</span> ,</span><br><span class="line">        <span class="attr">label</span>:<span class="string">&quot;饼图&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      </span><br><span class="line">    ]</span><br><span class="line">    <span class="comment">//修改大小后改变图表尺寸</span></span><br><span class="line">    <span class="keyword">const</span> resizeStartHandle =<span class="keyword">function</span>(<span class="params">e</span>)&#123;</span><br><span class="line">      dadad.<span class="property">w</span>=e.<span class="property">w</span>;</span><br><span class="line">      dadad.<span class="property">h</span>=e.<span class="property">h</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">var</span> line = <span class="title function_">ref</span>()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//mounted之后首次绘制图表，因为在模板没有渲染完成找不到dom节点去挂载实例，只能在mounted之后首次挂载</span></span><br><span class="line">    <span class="title function_">onMounted</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">       line.<span class="property">value</span> = <span class="keyword">new</span> <span class="title class_">Line</span>(<span class="string">&#x27;container1&#x27;</span>, &#123;</span><br><span class="line">        data,</span><br><span class="line">        <span class="attr">xField</span>: <span class="string">&#x27;month&#x27;</span>,</span><br><span class="line">        <span class="attr">yField</span>: <span class="string">&#x27;value&#x27;</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">      line.<span class="property">value</span>.<span class="title function_">render</span>()</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//select方法改变图表</span></span><br><span class="line">  <span class="keyword">const</span> change = <span class="keyword">function</span>(<span class="params">val</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(val)</span><br><span class="line">    line.<span class="property">value</span>.<span class="title function_">destroy</span>()</span><br><span class="line">    line.<span class="property">value</span> = <span class="keyword">new</span> <span class="title function_">val</span>(<span class="string">&#x27;container1&#x27;</span>, &#123;</span><br><span class="line">        data,</span><br><span class="line">        <span class="attr">xField</span>: <span class="string">&#x27;month&#x27;</span>,</span><br><span class="line">        <span class="attr">yField</span>: <span class="string">&#x27;value&#x27;</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">      line.<span class="property">value</span>.<span class="title function_">render</span>()</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">      chartdata,</span><br><span class="line">      <span class="comment">// line,</span></span><br><span class="line">      change,</span><br><span class="line">      dadad,</span><br><span class="line">      resizeStartHandle</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2>实现了根据数据动态选择图表，以及图表的移动，缩放。<br>问题：</li>
+<li>以构造函数作为对象字段不合理，这样前后端交互时无法保存数据。</li>
+<li>数据结构不合理，图表的长宽以及位置数据应该是跟图表在同一个对象。</li>
+<li>动态生成图表，不同图表展示的数据，参数都不同，这里需要再多考虑优化。</li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p> 基本流程跑通了，antv和Vue3DraggableResizable能满足动态报表生成的基本需求。之后要对表单的数据结构以及图表的切换再继续做优化。
+ </p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E6%8A%80%E6%9C%AF%E9%80%89%E6%8B%A9"><span class="toc-number">2.</span> <span class="toc-text">开源技术选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%8A%9F%E8%83%BD"><span class="toc-number">3.</span> <span class="toc-text">测试功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">5.</span> <span class="toc-text">结论</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

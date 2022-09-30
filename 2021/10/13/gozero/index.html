@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>gozero - Hexo</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="准备工作
+安装 golang
+配置 gomodudle
+安装 gotcl
+安装 proto 或者 protoc-gen-go
+
+因为不是自己搭建的项目，项目相关底层配置暂不熟悉，之后慢慢补充。
+搭建,"> 
+    <meta name="author" content="John Doe"> 
+    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Hexo</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">gozero</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">gozero</h1>
+        <div class="stuff">
+            <span>十月 13, 2021</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<li>安装 golang</li>
+<li>配置 gomodudle</li>
+<li>安装 gotcl</li>
+<li>安装 proto 或者 protoc-gen-go</li>
+</ul>
+<p>因为不是自己搭建的项目，项目相关底层配置暂不熟悉，之后慢慢补充。</p>
+<h3 id="搭建微服务步骤，"><a href="#搭建微服务步骤，" class="headerlink" title="搭建微服务步骤，"></a>搭建微服务步骤，</h3><ul>
+<li>编辑 api 文件</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@server(</span><br><span class="line">	group: xxx<span class="comment">//生成文件的分组</span></span><br><span class="line">)</span><br><span class="line">service xxx &#123;</span><br><span class="line">	@handler Getchartlist</span><br><span class="line">	post /xxx/xxx(req) returns(res)<span class="comment">//定义api网关</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span>(</span><br><span class="line">    res&#123;</span><br><span class="line">     A <span class="type">string</span> <span class="string">`json:&quot;a,optional&quot;`</span> <span class="comment">//定义参数和返回值类型 可以引用类型， 首字母非大写代表私有变量，描述字段中定义在json中需要传的字段，前端请求时参数为 a 服务端处理按照 A来取值 optional代表此参数可为空。</span></span><br><span class="line">     B <span class="type">int64</span>  <span class="string">`json:&quot;b,optional&quot;`</span></span><br><span class="line">    &#125;</span><br><span class="line">    req&#123;</span><br><span class="line">    X list  <span class="string">`json:&quot;x,optional&quot;`</span></span><br><span class="line">    &#125;</span><br><span class="line">    list&#123;</span><br><span class="line">     Y <span class="type">string</span> <span class="string">`json:&quot;y,optional&quot;`</span></span><br><span class="line">     Z <span class="type">string</span> <span class="string">`json:&quot;z,optional&quot;`</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在主 api 文件中引入新编辑的 api 文件</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;xxx.api&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 goctl 命令编译 api 文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ goctl api go -api xxx.api -<span class="built_in">dir</span> . -style goZero</span><br><span class="line">//-dir 需要输出文件的路径  -stlye 输出文件的命名风格</span><br></pre></td></tr></table></figure>
+
+<p>之后会生成如下的文件结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── etc</span><br><span class="line">│   └── greet-api.yaml              // 配置文件</span><br><span class="line">├── go.mod                          // mod文件</span><br><span class="line">├── greet.api                       // api描述文件</span><br><span class="line">├── greet.go                        // main函数入口</span><br><span class="line">└── internal</span><br><span class="line">    ├── config</span><br><span class="line">    │   └── config.go               // 配置声明type</span><br><span class="line">    ├── handler                     // 路由及handler转发</span><br><span class="line">    │   ├── greethandler.go</span><br><span class="line">    │   └── routes.go</span><br><span class="line">    ├── logic                       // 业务逻辑</span><br><span class="line">    │   └── greetlogic.go</span><br><span class="line">    ├── middleware                  // 中间件文件</span><br><span class="line">    │   └── greetmiddleware.go</span><br><span class="line">    ├── svc                         // logic所依赖的资源池</span><br><span class="line">    │   └── servicecontext.go</span><br><span class="line">    └── types                       // request、response的struct，根据api自动生成，不建议编辑</span><br><span class="line">        └── types.go</span><br></pre></td></tr></table></figure>
+
+<p>其中我们需要关注的是 config 中的配置信息，yaml 文件中的端口，数据库等配置。在 logic 中编写业务逻辑，其他文件根据需求改动。</p>
+<ul>
+<li>新建 rpc 服务<br>新建一个文件夹用来存放 rpc 服务，在文件夹中新建一个.proto 文件，如果需要连接数据库，可分别新建 model 和 rpc 文件夹<br>在 rpc 文件夹下新建一个.proto 文件编写</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">message Request&#123;//定义信息的req值类型</span><br><span class="line">  int64  A =1;</span><br><span class="line">  string B =2;</span><br><span class="line">&#125;</span><br><span class="line">message Response&#123;//定义信息的res值类型</span><br><span class="line">  int64  X =1;</span><br><span class="line">  string Y =2;</span><br><span class="line">&#125;</span><br><span class="line"> service xxx &#123;</span><br><span class="line"> rpc Ping(Request) returns(Response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行 goctl 指令生成 rpc 服务代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ goctl rpc proto -src xxx.proto -<span class="built_in">dir</span> . //与api指令语法类似</span><br></pre></td></tr></table></figure>
+
+<p>生成的 rpc 目录如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── etc             // yaml配置文件</span><br><span class="line">│   └── greet.yaml</span><br><span class="line">├── go.mod</span><br><span class="line">├── greet           // pb.go文件夹①</span><br><span class="line">│   └── greet.pb.go</span><br><span class="line">├── greet.go        // main函数</span><br><span class="line">├── greet.proto     // proto 文件</span><br><span class="line">├── greetclient     // call logic ②</span><br><span class="line">│   └── greet.go</span><br><span class="line">└── internal</span><br><span class="line">   ├── config      // yaml配置对应的实体</span><br><span class="line">   │   └── config.go</span><br><span class="line">   ├── logic       // 业务代码</span><br><span class="line">   │   └── pinglogic.go</span><br><span class="line">   ├── server      // rpc server</span><br><span class="line">   │   └── greetserver.go</span><br><span class="line">   └── svc         // 依赖资源</span><br><span class="line">       └── servicecontext.go</span><br></pre></td></tr></table></figure>
+<p>与网关层类似，需要关注的是yaml配置文件，logic业务代码，config，以及svc的依赖资源配置，其他文件由指令生成按需改动。</p>
+<ul>
+<li><p>生成model文件<br>操作数据库一般在rpc服务中操作，在之前新建的model文件夹下使用goctl生成model文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ goctl model mysql datasource -url=<span class="string">&quot;user:password@tcp(127.0.0.1:3306)/database&quot;</span> -table=<span class="string">&quot;*&quot;</span>  -<span class="built_in">dir</span>=<span class="string">&quot;./model&quot;</span></span><br><span class="line">//推荐使用datasource生成</span><br></pre></td></tr></table></figure>
+<p>生成的model文件代码示例</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> model</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;database/sql&quot;</span></span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;strings&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;github.com/tal-tech/go-zero/core/stores/cache&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/tal-tech/go-zero/core/stores/sqlc&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/tal-tech/go-zero/core/stores/sqlx&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/tal-tech/go-zero/core/stringx&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/tal-tech/go-zero/tools/goctl/model/sql/builderx&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    userFieldNames          = builderx.RawFieldNames(&amp;User&#123;&#125;)</span><br><span class="line">    userRows                = strings.Join(userFieldNames, <span class="string">&quot;,&quot;</span>)</span><br><span class="line">    userRowsExpectAutoSet   = strings.Join(stringx.Remove(userFieldNames, <span class="string">&quot;`id`&quot;</span>, <span class="string">&quot;`create_time`&quot;</span>, <span class="string">&quot;`update_time`&quot;</span>), <span class="string">&quot;,&quot;</span>)</span><br><span class="line">    userRowsWithPlaceHolder = strings.Join(stringx.Remove(userFieldNames, <span class="string">&quot;`id`&quot;</span>, <span class="string">&quot;`create_time`&quot;</span>, <span class="string">&quot;`update_time`&quot;</span>), <span class="string">&quot;=?,&quot;</span>) + <span class="string">&quot;=?&quot;</span></span><br><span class="line"></span><br><span class="line">    cacheUserNamePrefix   = <span class="string">&quot;cache#User#name#&quot;</span></span><br><span class="line">    cacheUserMobilePrefix = <span class="string">&quot;cache#User#mobile#&quot;</span></span><br><span class="line">    cacheUserIdPrefix     = <span class="string">&quot;cache#User#id#&quot;</span></span><br><span class="line">    cacheUserPrefix       = <span class="string">&quot;cache#User#user#&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> (</span><br><span class="line">    UserModel <span class="keyword">interface</span> &#123;<span class="comment">//默认生成的查询方法，如果有其他需求，需添加方法</span></span><br><span class="line">        Insert(data User) (sql.Result, <span class="type">error</span>)</span><br><span class="line">        FindOne(id <span class="type">int64</span>) (*User, <span class="type">error</span>)</span><br><span class="line">        FindOneByUser(user <span class="type">string</span>) (*User, <span class="type">error</span>)</span><br><span class="line">        FindOneByName(name <span class="type">string</span>) (*User, <span class="type">error</span>)</span><br><span class="line">        FindOneByMobile(mobile <span class="type">string</span>) (*User, <span class="type">error</span>)</span><br><span class="line">        Update(data User) <span class="type">error</span></span><br><span class="line">        Delete(id <span class="type">int64</span>) <span class="type">error</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    defaultUserModel <span class="keyword">struct</span> &#123;</span><br><span class="line">        sqlc.CachedConn</span><br><span class="line">        table <span class="type">string</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    User <span class="keyword">struct</span> &#123;<span class="comment">//查询的表的字段</span></span><br><span class="line">        Id         <span class="type">int64</span>     <span class="string">`db:&quot;id&quot;`</span></span><br><span class="line">        User       <span class="type">string</span>    <span class="string">`db:&quot;user&quot;`</span>     <span class="comment">// 用户</span></span><br><span class="line">        Name       <span class="type">string</span>    <span class="string">`db:&quot;name&quot;`</span>     <span class="comment">// 用户名称</span></span><br><span class="line">        Password   <span class="type">string</span>    <span class="string">`db:&quot;password&quot;`</span> <span class="comment">// 用户密码</span></span><br><span class="line">        Mobile     <span class="type">string</span>    <span class="string">`db:&quot;mobile&quot;`</span>   <span class="comment">// 手机号</span></span><br><span class="line">        Gender     <span class="type">string</span>    <span class="string">`db:&quot;gender&quot;`</span>   <span class="comment">// 男｜女｜未公开</span></span><br><span class="line">        Nickname   <span class="type">string</span>    <span class="string">`db:&quot;nickname&quot;`</span> <span class="comment">// 用户昵称</span></span><br><span class="line">        CreateTime time.Time <span class="string">`db:&quot;create_time&quot;`</span></span><br><span class="line">        UpdateTime time.Time <span class="string">`db:&quot;update_time&quot;`</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewUserModel</span><span class="params">(conn sqlx.SqlConn, c cache.CacheConf)</span></span> UserModel &#123;</span><br><span class="line">    <span class="keyword">return</span> &amp;defaultUserModel&#123;</span><br><span class="line">        CachedConn: sqlc.NewConn(conn, c),</span><br><span class="line">        table:      <span class="string">&quot;`user`&quot;</span>,<span class="comment">//当前查询的表</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> Insert(data User) (sql.Result, <span class="type">error</span>) &#123;</span><br><span class="line">    userNameKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserNamePrefix, data.Name)</span><br><span class="line">    userMobileKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserMobilePrefix, data.Mobile)</span><br><span class="line">    userKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserPrefix, data.User)</span><br><span class="line">    ret, err := m.Exec(<span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn)</span></span> (result sql.Result, err <span class="type">error</span>) &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;insert into %s (%s) values (?, ?, ?, ?, ?, ?)&quot;</span>, m.table, userRowsExpectAutoSet)</span><br><span class="line">        <span class="keyword">return</span> conn.Exec(query, data.User, data.Name, data.Password, data.Mobile, data.Gender, data.Nickname)</span><br><span class="line">    &#125;, userNameKey, userMobileKey, userKey)</span><br><span class="line">    <span class="keyword">return</span> ret, err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> FindOne(id <span class="type">int64</span>) (*User, <span class="type">error</span>) &#123;</span><br><span class="line">    userIdKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserIdPrefix, id)</span><br><span class="line">    <span class="keyword">var</span> resp User</span><br><span class="line">    err := m.QueryRow(&amp;resp, userIdKey, <span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn, v <span class="keyword">interface</span>&#123;&#125;)</span></span> <span class="type">error</span> &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;select %s from %s where `id` = ? limit 1&quot;</span>, userRows, m.table)</span><br><span class="line">        <span class="keyword">return</span> conn.QueryRow(v, query, id)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">switch</span> err &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="literal">nil</span>:</span><br><span class="line">        <span class="keyword">return</span> &amp;resp, <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">case</span> sqlc.ErrNotFound:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, ErrNotFound</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> FindOneByUser(user <span class="type">string</span>) (*User, <span class="type">error</span>) &#123;</span><br><span class="line">    userKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserPrefix, user)</span><br><span class="line">    <span class="keyword">var</span> resp User</span><br><span class="line">    err := m.QueryRowIndex(&amp;resp, userKey, m.formatPrimary, <span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn, v <span class="keyword">interface</span>&#123;&#125;)</span></span> (i <span class="keyword">interface</span>&#123;&#125;, e <span class="type">error</span>) &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;select %s from %s where `user` = ? limit 1&quot;</span>, userRows, m.table)</span><br><span class="line">        <span class="keyword">if</span> err := conn.QueryRow(&amp;resp, query, user); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resp.Id, <span class="literal">nil</span></span><br><span class="line">    &#125;, m.queryPrimary)</span><br><span class="line">    <span class="keyword">switch</span> err &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="literal">nil</span>:</span><br><span class="line">        <span class="keyword">return</span> &amp;resp, <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">case</span> sqlc.ErrNotFound:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, ErrNotFound</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> FindOneByName(name <span class="type">string</span>) (*User, <span class="type">error</span>) &#123;</span><br><span class="line">    userNameKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserNamePrefix, name)</span><br><span class="line">    <span class="keyword">var</span> resp User</span><br><span class="line">    err := m.QueryRowIndex(&amp;resp, userNameKey, m.formatPrimary, <span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn, v <span class="keyword">interface</span>&#123;&#125;)</span></span> (i <span class="keyword">interface</span>&#123;&#125;, e <span class="type">error</span>) &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;select %s from %s where `name` = ? limit 1&quot;</span>, userRows, m.table)</span><br><span class="line">        <span class="keyword">if</span> err := conn.QueryRow(&amp;resp, query, name); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resp.Id, <span class="literal">nil</span></span><br><span class="line">    &#125;, m.queryPrimary)</span><br><span class="line">    <span class="keyword">switch</span> err &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="literal">nil</span>:</span><br><span class="line">        <span class="keyword">return</span> &amp;resp, <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">case</span> sqlc.ErrNotFound:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, ErrNotFound</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> FindOneByMobile(mobile <span class="type">string</span>) (*User, <span class="type">error</span>) &#123;</span><br><span class="line">    userMobileKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserMobilePrefix, mobile)</span><br><span class="line">    <span class="keyword">var</span> resp User</span><br><span class="line">    err := m.QueryRowIndex(&amp;resp, userMobileKey, m.formatPrimary, <span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn, v <span class="keyword">interface</span>&#123;&#125;)</span></span> (i <span class="keyword">interface</span>&#123;&#125;, e <span class="type">error</span>) &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;select %s from %s where `mobile` = ? limit 1&quot;</span>, userRows, m.table)</span><br><span class="line">        <span class="keyword">if</span> err := conn.QueryRow(&amp;resp, query, mobile); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resp.Id, <span class="literal">nil</span></span><br><span class="line">    &#125;, m.queryPrimary)</span><br><span class="line">    <span class="keyword">switch</span> err &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="literal">nil</span>:</span><br><span class="line">        <span class="keyword">return</span> &amp;resp, <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">case</span> sqlc.ErrNotFound:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, ErrNotFound</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> Update(data User) <span class="type">error</span> &#123;</span><br><span class="line">    userIdKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserIdPrefix, data.Id)</span><br><span class="line">    _, err := m.Exec(<span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn)</span></span> (result sql.Result, err <span class="type">error</span>) &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;update %s set %s where `id` = ?&quot;</span>, m.table, userRowsWithPlaceHolder)</span><br><span class="line">        <span class="keyword">return</span> conn.Exec(query, data.User, data.Name, data.Password, data.Mobile, data.Gender, data.Nickname, data.Id)</span><br><span class="line">    &#125;, userIdKey)</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> Delete(id <span class="type">int64</span>) <span class="type">error</span> &#123;</span><br><span class="line">    data, err := m.FindOne(id)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    userNameKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserNamePrefix, data.Name)</span><br><span class="line">    userMobileKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserMobilePrefix, data.Mobile)</span><br><span class="line">    userIdKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserIdPrefix, id)</span><br><span class="line">    userKey := fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserPrefix, data.User)</span><br><span class="line">    _, err = m.Exec(<span class="function"><span class="keyword">func</span><span class="params">(conn sqlx.SqlConn)</span></span> (result sql.Result, err <span class="type">error</span>) &#123;</span><br><span class="line">        query := fmt.Sprintf(<span class="string">&quot;delete from %s where `id` = ?&quot;</span>, m.table)</span><br><span class="line">        <span class="keyword">return</span> conn.Exec(query, id)</span><br><span class="line">    &#125;, userNameKey, userMobileKey, userIdKey, userKey)</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> formatPrimary(primary <span class="keyword">interface</span>&#123;&#125;) <span class="type">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;%s%v&quot;</span>, cacheUserIdPrefix, primary)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m *defaultUserModel)</span></span> queryPrimary(conn sqlx.SqlConn, v, primary <span class="keyword">interface</span>&#123;&#125;) <span class="type">error</span> &#123;</span><br><span class="line">    query := fmt.Sprintf(<span class="string">&quot;select %s from %s where `id` = ? limit 1&quot;</span>, userRows, m.table)</span><br><span class="line">    <span class="keyword">return</span> conn.QueryRow(v, query, primary)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后，在rpc/imternal/svc下的资源管理文件中注册model方法</p>
+</li>
+<li><p>编写logic中的业务代码<br>首先在rpc/internal/logic中找到之前生成的文件</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *PingLogic)</span></span> Ping(in *chart.Request) (*xxx.Response, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// todo: add your logic here and delete this line</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &amp;xxx.Response&#123;&#125;, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在此处编写业务逻辑代码，调用model方法查询数据，返回，类型是之前编写的.proto文件中定义的返回值数据类型</span></span><br></pre></td></tr></table></figure>
+<p>之后在网关层internal/logic中编写网关层的逻辑代码</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(l *xxx)</span></span> ApiLogin(req types.RegisterAndLogin) (*types.xxxx, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// todo: add your logic here and delete this line</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &amp;types.xxx&#123;&#125;, <span class="literal">nil</span></span><br><span class="line">    <span class="comment">//此处编写网关层的业务代码，类型为之前编写的.api文件的数据类型。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>编译，每个prc服务根目录下有xx.go文件需要单独起服务，注意不要端口重复，互相依赖的服务需先启动被依赖的服务。一个gozero微服务就完成了</p>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%AD%A5%E9%AA%A4%EF%BC%8C"><span class="toc-number">2.</span> <span class="toc-text">搭建微服务步骤，</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
