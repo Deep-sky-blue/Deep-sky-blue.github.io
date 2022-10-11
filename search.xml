@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>记录一个annimate.css的问题</title>
+    <url>/2022/01/10/annimate-css/</url>
+    <content><![CDATA[<h2 id="annimate-css版本4-1-1在某些电脑上无法显示动画效果"><a href="#annimate-css版本4-1-1在某些电脑上无法显示动画效果" class="headerlink" title="annimate.css版本4.1.1在某些电脑上无法显示动画效果"></a>annimate.css版本4.1.1在某些电脑上无法显示动画效果</h2><ol>
+<li>排查问题，浏览器没有报错，不同的浏览器内核也没有差异，只是某些同事的电脑可以显示某些同事的电脑不能显示。</li>
+<li>估计可能是操作系统设置的问题，查看不能显示的同事的系统设置，发现在性能设置中关闭了显示窗口内动画效果选项。</li>
+<li>方案<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">可搜索 外观与性能 或</span><br><span class="line">win+R %windir%\system32\SystemPropertiesPerformance.exe</span><br></pre></td></tr></table></figure>
+在视觉效果中勾选窗口内的动画空间和元素，即可</li>
+<li>了解到annimate之前的版本无此问题，是在4.0之后的版本出现。将版本回退问题解决</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>理解什么是CMDB</title>
     <url>/2021/12/15/CMDB/</url>
     <content><![CDATA[<h2 id="什么是-CMDB"><a href="#什么是-CMDB" class="headerlink" title="什么是 CMDB"></a>什么是 CMDB</h2><p>CMDB 是 Configuration Management Database 的简称，中文翻译成配置管理数据库,是一个逻辑数据库，包含了配置项全生命周期及配置项之间的关系（物理关系，时事通讯关系，非实时通讯关系，依赖关系）</p>
@@ -24,24 +42,6 @@
       </categories>
   </entry>
   <entry>
-    <title>记录一个annimate.css的问题</title>
-    <url>/2022/01/10/annimate-css/</url>
-    <content><![CDATA[<h2 id="annimate-css版本4-1-1在某些电脑上无法显示动画效果"><a href="#annimate-css版本4-1-1在某些电脑上无法显示动画效果" class="headerlink" title="annimate.css版本4.1.1在某些电脑上无法显示动画效果"></a>annimate.css版本4.1.1在某些电脑上无法显示动画效果</h2><ol>
-<li>排查问题，浏览器没有报错，不同的浏览器内核也没有差异，只是某些同事的电脑可以显示某些同事的电脑不能显示。</li>
-<li>估计可能是操作系统设置的问题，查看不能显示的同事的系统设置，发现在性能设置中关闭了显示窗口内动画效果选项。</li>
-<li>方案<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">可搜索 外观与性能 或</span><br><span class="line">win+R %windir%\system32\SystemPropertiesPerformance.exe</span><br></pre></td></tr></table></figure>
-在视觉效果中勾选窗口内的动画空间和元素，即可</li>
-<li>了解到annimate之前的版本无此问题，是在4.0之后的版本出现。将版本回退问题解决</li>
-</ol>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>antv g2 plot 动态生成报表设计方案</title>
     <url>/2021/08/16/antvg2/</url>
     <content><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>目标实现一个大数据统计平台，最终目标是实现一个动态报表，可以选择图表类型，拖拽缩放，自定义布局。可视化操作数据报表，类似阿里云后台的数据管理系统。</p>
@@ -61,106 +61,6 @@
 ]]></content>
       <categories>
         <category>web前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>bug</title>
-    <url>/2021/09/01/bug/</url>
-    <content><![CDATA[<h3 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h3><ul>
-<li><p>vite+vue3.0+antdv。按需引入组件时，代码运行没问题，打包报错</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; <span class="title class_">Card</span> ,<span class="title class_">Dropdown</span>,<span class="title class_">Menu</span>,<span class="title class_">MenuItem</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;ant-design-vue&#x27;</span></span><br><span class="line"> <span class="title class_">Rollup</span> failed to resolve <span class="keyword">import</span> <span class="string">&quot;/XX/XX/XXX&quot;</span> <span class="keyword">from</span> <span class="string">&quot;src/XXX.vue&quot;</span>.</span><br><span class="line"><span class="title class_">This</span> is most likely unintended because it can <span class="keyword">break</span> your application at runtime.</span><br><span class="line"><span class="title class_">If</span> you <span class="keyword">do</span> want to externalize <span class="variable language_">this</span> <span class="variable language_">module</span> explicitly add it to</span><br><span class="line"><span class="string">`build.rollupOptions.external`</span></span><br></pre></td></tr></table></figure>
-<p>报错原因:rollup本身不具备解析能力,<br>解决方案：1.不在imprort中引入</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">     <span class="title class_">Menu</span>,</span><br><span class="line">     <span class="title class_">MenuItem</span>: <span class="title class_">Menu</span>.<span class="property">Item</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
-<p>使用rollup/plugin-alias配置vite.config.ts，未测试，待验证。</p>
-</li>
-<li><p>同事反应在登录时会出现 Failed to fetch dynamically imported module: xxx.js的报错<br>通过了解，该问题出现在每次版本迭代之后的第一次使用，刷新浏览器即可正常访问，本来想的是可能是浏览器缓存的问题，但是vite打包的资源是加了hash值的，去静态资源里查找并没有找到这个报错的文件，然后发现所有的静态资源都是hash打包，只有index.html没有，与之前的文件名相同。判断是index.html中的缓存请求了之前的静态资源导致了报错。<br>尝试修改nginx配置，默认index.html不缓存。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = /index.html &#123;</span><br><span class="line">   add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尝试重新打包，问题解决</p>
-</li>
-<li><p>双斜杠正则表达式在safari浏览器中报语法错误的问题</p>
-</li>
-</ul>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="regexp">/XXX/g</span>;</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="keyword">new</span> <span class="title class_">RegExp</span>(“<span class="variable constant_">XXX</span>”, ‘g’);</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>浏览器兼容scorll-bar的问题<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-该方案不能兼容firfox和ie10正确的写法是<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  <span class="attribute">scrollbar-width</span>:none;//兼容firfox</span><br><span class="line">  -ms-<span class="attribute">overflow</span>-style:nene;//兼容ie10</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>cocos</title>
-    <url>/2022/07/04/cocos/</url>
-    <content><![CDATA[<h3 id="关于最近cocos的一些体会心得"><a href="#关于最近cocos的一些体会心得" class="headerlink" title="关于最近cocos的一些体会心得"></a>关于最近cocos的一些体会心得</h3><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
-<li>预制体：</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>coocs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>generator</title>
-    <url>/2021/08/11/generator/</url>
-    <content><![CDATA[<h3 id="es6的generator函数"><a href="#es6的generator函数" class="headerlink" title="es6的generator函数"></a>es6的generator函数</h3><p>遇到一个需求，要遍历两个树结构，找出其中相同的字段，并且标记。本来图快直接暴力递归，之后觉得不合理，双重循环加递归时间复杂度太高。想优化单独提取字段之后再去重。想到了es6有一个generator函数，写法很优雅，尝试了一下，代码如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">sort</span>(<span class="params">tree: treetabledata</span>) &#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> tree) &#123;</span><br><span class="line">       <span class="keyword">if</span>(item.<span class="property">component</span> == <span class="string">&#x27;LAYOUT&#x27;</span>&amp;&amp;item.<span class="property">children</span>)</span><br><span class="line">            <span class="keyword">yield</span>* <span class="title function_">sort</span>(item.<span class="property">children</span>)</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="keyword">yield</span> item.<span class="property">menuId</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">     <span class="keyword">const</span> list1 = [...<span class="title function_">sort</span>(treeData3.<span class="property">result</span>.<span class="property">menus</span>)]</span><br><span class="line">     <span class="keyword">const</span> list2 = [...<span class="title function_">sort</span>(treeData1.<span class="property">result</span>.<span class="property">list</span>)]</span><br><span class="line">     <span class="keyword">const</span> list =  [...<span class="keyword">new</span> <span class="title class_">Set</span>(list1.<span class="title function_">concat</span>(list2))]</span><br></pre></td></tr></table></figure>
-<p>我认为此处generator函数有两个好处，代码更加简洁易懂，返回的结果是一个遍历器，可以使用拓展运算符或者解构，更加灵活。</p>
-<p>之前用genertor函数用的很少，之后又去重新了解了一下。</p>
-<ul>
-<li>基本概念：Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。本章详细介绍 Generator 函数的语法和 API，它的异步编程应用请看《Generator 函数的异步应用》一章。</li>
-</ul>
-<p>Generator 函数有多种理解角度。语法上，首先可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。</p>
-<p>执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。</p>
-<ul>
-<li>yield表达式：由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志。</li>
-</ul>
-<p>遍历器对象的next方法的运行逻辑如下。</p>
-<p>（1）遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。</p>
-<p>（2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。</p>
-<p>（3）如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。</p>
-<p>（4）如果该函数没有return语句，则返回的对象的value属性值为undefined。</p>
-<ul>
-<li>next指调用此方法，内部指针指向该语句时才会执行，我选择了使用for of循环，可以不用使用next方法拿到yield的状态。</li>
-<li>在genertor内部继续调用genertor函数：像上面的代码一样，使用yield*加genertor函数，实现递归。</li>
-</ul>
-<p>genertor的应用场景比较适合流程管理和状态管理。我的用法就显得很肤浅，没有遇到过类似的业务，希望以后能有机会碰到，关于genertor函数的学习也只到使用，并没有往原型链，返回的遍历器类型上深究，之后有机会会慢慢补充</p>
-]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>golang结构体</title>
-    <url>/2021/09/26/golangstruct/</url>
-    <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>golang 中没有类的概念，所以使用结构体来达到面向对象的目的。类似于 typescript 的 interfece，golang 为强类型语言，每个值的引用，函数的参数及返回值都必须定义结构体规范数据类型。</li>
-<li>成员变量：golang 中没有 public 和 private 关键字，定义私有变量和公共变量的方法是首字母的大小写区分</li>
-</ul>
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Hour <span class="type">int</span>    <span class="comment">//公共变量</span></span><br><span class="line">    minute <span class="type">int</span>  <span class="comment">//私有变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结构体的使用流程"><a href="#结构体的使用流程" class="headerlink" title="结构体的使用流程"></a>结构体的使用流程</h2><ul>
-<li>定义结构体</li>
-</ul>
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>基本实例化</li>
-</ul>
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> h1 house</span><br><span class="line">h1.size = <span class="number">130</span></span><br><span class="line">h1.style = <span class="string">&quot;中国风&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, h1) <span class="comment">// &#123;130 0 中国风&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v&quot;</span>, h1)  <span class="comment">// main.house&#123;size:130, price:0, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">fmt.Println(h1.size)   <span class="comment">// 130</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>匿名的结构体（匿名的结构体可以定义临时结构体）<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> family <span class="keyword">struct</span> &#123;</span><br><span class="line">	Mom <span class="type">string</span></span><br><span class="line">	Dad <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line">family.Mom = <span class="string">&quot;Mommy&quot;</span></span><br><span class="line">family.Dad = <span class="string">&quot;Daddy&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, family)  <span class="comment">// &#123;Mommy Daddy&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, family) <span class="comment">// struct &#123; Mom string; Dad string &#125;&#123;Mom:&quot;Mommy&quot;, Dad:&quot;Daddy&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>结构体指针<br>使用new关键字<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p1 := <span class="built_in">new</span>(house)</span><br><span class="line">p1.style = <span class="string">&quot;欧式&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;欧式&quot;&#125;</span></span><br></pre></td></tr></table></figure>
-使用地址符&amp;<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p2 := &amp;house&#123;&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, p2)  <span class="comment">// *main.house</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p2) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>构造函数<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style       <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 返回结构体指针</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newHouse</span><span class="params">(size, price <span class="type">float64</span>, style <span class="type">string</span>)</span></span> *house &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;house&#123;</span><br><span class="line">		size:  size,</span><br><span class="line">		price: price,</span><br><span class="line">		style: style,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := newHouse(<span class="number">100</span>, <span class="number">80</span>, <span class="string">&quot;中国风&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:100, price:80, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="golang的指针-amp-和"><a href="#golang的指针-amp-和" class="headerlink" title="golang的指针 &amp;和*"></a>golang的指针 &amp;和*</h2>经常会见到: p . <em>p , &amp;p 三个符号<br>p是一个指针变量的名字，表示此指针变量指向的内存地址，如果使用%p来输出的话，它将是一个16进制数。而</em>p表示此指针指向的内存地址中存放的内容，一般是一个和指针类型一致的变量或者常量。<br>而我们知道，&amp;是取地址运算符，&amp;p就是取指针p的地址。等会，怎么又来了个地址，它到底和p有什么区别？区别在于，指针p同时也是个变量，既然是变量，编译器肯定要为其分配内存地址，就像程序中定义了一个int型的变量i，编译器要为其分配一块内存空间一样。而&amp;p就表示编译器为变量p分配的内存地址，而因为p是一个指针变量，这种特殊的身份注定了它要指向另外一个内存地址，程序员按照程序的需要让它指向一个内存地址，这个它指向的内存地址就用p表示。而且，p指向的地址中的内容就用*p表示。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>golang</category>
       </categories>
   </entry>
   <entry>
@@ -223,6 +123,77 @@
       </categories>
   </entry>
   <entry>
+    <title>generator</title>
+    <url>/2021/08/11/generator/</url>
+    <content><![CDATA[<h3 id="es6的generator函数"><a href="#es6的generator函数" class="headerlink" title="es6的generator函数"></a>es6的generator函数</h3><p>遇到一个需求，要遍历两个树结构，找出其中相同的字段，并且标记。本来图快直接暴力递归，之后觉得不合理，双重循环加递归时间复杂度太高。想优化单独提取字段之后再去重。想到了es6有一个generator函数，写法很优雅，尝试了一下，代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">sort</span>(<span class="params">tree: treetabledata</span>) &#123;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> tree) &#123;</span><br><span class="line">       <span class="keyword">if</span>(item.<span class="property">component</span> == <span class="string">&#x27;LAYOUT&#x27;</span>&amp;&amp;item.<span class="property">children</span>)</span><br><span class="line">            <span class="keyword">yield</span>* <span class="title function_">sort</span>(item.<span class="property">children</span>)</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="keyword">yield</span> item.<span class="property">menuId</span></span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">     <span class="keyword">const</span> list1 = [...<span class="title function_">sort</span>(treeData3.<span class="property">result</span>.<span class="property">menus</span>)]</span><br><span class="line">     <span class="keyword">const</span> list2 = [...<span class="title function_">sort</span>(treeData1.<span class="property">result</span>.<span class="property">list</span>)]</span><br><span class="line">     <span class="keyword">const</span> list =  [...<span class="keyword">new</span> <span class="title class_">Set</span>(list1.<span class="title function_">concat</span>(list2))]</span><br></pre></td></tr></table></figure>
+<p>我认为此处generator函数有两个好处，代码更加简洁易懂，返回的结果是一个遍历器，可以使用拓展运算符或者解构，更加灵活。</p>
+<p>之前用genertor函数用的很少，之后又去重新了解了一下。</p>
+<ul>
+<li>基本概念：Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。本章详细介绍 Generator 函数的语法和 API，它的异步编程应用请看《Generator 函数的异步应用》一章。</li>
+</ul>
+<p>Generator 函数有多种理解角度。语法上，首先可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。</p>
+<p>执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。</p>
+<ul>
+<li>yield表达式：由于 Generator 函数返回的遍历器对象，只有调用next方法才会遍历下一个内部状态，所以其实提供了一种可以暂停执行的函数。yield表达式就是暂停标志。</li>
+</ul>
+<p>遍历器对象的next方法的运行逻辑如下。</p>
+<p>（1）遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值。</p>
+<p>（2）下一次调用next方法时，再继续往下执行，直到遇到下一个yield表达式。</p>
+<p>（3）如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值。</p>
+<p>（4）如果该函数没有return语句，则返回的对象的value属性值为undefined。</p>
+<ul>
+<li>next指调用此方法，内部指针指向该语句时才会执行，我选择了使用for of循环，可以不用使用next方法拿到yield的状态。</li>
+<li>在genertor内部继续调用genertor函数：像上面的代码一样，使用yield*加genertor函数，实现递归。</li>
+</ul>
+<p>genertor的应用场景比较适合流程管理和状态管理。我的用法就显得很肤浅，没有遇到过类似的业务，希望以后能有机会碰到，关于genertor函数的学习也只到使用，并没有往原型链，返回的遍历器类型上深究，之后有机会会慢慢补充</p>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>cocos</title>
+    <url>/2022/07/04/cocos/</url>
+    <content><![CDATA[<h3 id="关于最近cocos的一些体会心得"><a href="#关于最近cocos的一些体会心得" class="headerlink" title="关于最近cocos的一些体会心得"></a>关于最近cocos的一些体会心得</h3><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
+<li>预制体：</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>coocs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang结构体</title>
+    <url>/2021/09/26/golangstruct/</url>
+    <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>golang 中没有类的概念，所以使用结构体来达到面向对象的目的。类似于 typescript 的 interfece，golang 为强类型语言，每个值的引用，函数的参数及返回值都必须定义结构体规范数据类型。</li>
+<li>成员变量：golang 中没有 public 和 private 关键字，定义私有变量和公共变量的方法是首字母的大小写区分</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Hour <span class="type">int</span>    <span class="comment">//公共变量</span></span><br><span class="line">    minute <span class="type">int</span>  <span class="comment">//私有变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体的使用流程"><a href="#结构体的使用流程" class="headerlink" title="结构体的使用流程"></a>结构体的使用流程</h2><ul>
+<li>定义结构体</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基本实例化</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> h1 house</span><br><span class="line">h1.size = <span class="number">130</span></span><br><span class="line">h1.style = <span class="string">&quot;中国风&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, h1) <span class="comment">// &#123;130 0 中国风&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v&quot;</span>, h1)  <span class="comment">// main.house&#123;size:130, price:0, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">fmt.Println(h1.size)   <span class="comment">// 130</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>匿名的结构体（匿名的结构体可以定义临时结构体）<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> family <span class="keyword">struct</span> &#123;</span><br><span class="line">	Mom <span class="type">string</span></span><br><span class="line">	Dad <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line">family.Mom = <span class="string">&quot;Mommy&quot;</span></span><br><span class="line">family.Dad = <span class="string">&quot;Daddy&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, family)  <span class="comment">// &#123;Mommy Daddy&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, family) <span class="comment">// struct &#123; Mom string; Dad string &#125;&#123;Mom:&quot;Mommy&quot;, Dad:&quot;Daddy&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>结构体指针<br>使用new关键字<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p1 := <span class="built_in">new</span>(house)</span><br><span class="line">p1.style = <span class="string">&quot;欧式&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;欧式&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+使用地址符&amp;<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p2 := &amp;house&#123;&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, p2)  <span class="comment">// *main.house</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p2) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>构造函数<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style       <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 返回结构体指针</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newHouse</span><span class="params">(size, price <span class="type">float64</span>, style <span class="type">string</span>)</span></span> *house &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;house&#123;</span><br><span class="line">		size:  size,</span><br><span class="line">		price: price,</span><br><span class="line">		style: style,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := newHouse(<span class="number">100</span>, <span class="number">80</span>, <span class="string">&quot;中国风&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:100, price:80, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="golang的指针-amp-和"><a href="#golang的指针-amp-和" class="headerlink" title="golang的指针 &amp;和*"></a>golang的指针 &amp;和*</h2>经常会见到: p . <em>p , &amp;p 三个符号<br>p是一个指针变量的名字，表示此指针变量指向的内存地址，如果使用%p来输出的话，它将是一个16进制数。而</em>p表示此指针指向的内存地址中存放的内容，一般是一个和指针类型一致的变量或者常量。<br>而我们知道，&amp;是取地址运算符，&amp;p就是取指针p的地址。等会，怎么又来了个地址，它到底和p有什么区别？区别在于，指针p同时也是个变量，既然是变量，编译器肯定要为其分配内存地址，就像程序中定义了一个int型的变量i，编译器要为其分配一块内存空间一样。而&amp;p就表示编译器为变量p分配的内存地址，而因为p是一个指针变量，这种特殊的身份注定了它要指向另外一个内存地址，程序员按照程序的需要让它指向一个内存地址，这个它指向的内存地址就用p表示。而且，p指向的地址中的内容就用*p表示。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+  </entry>
+  <entry>
     <title>windows配置golang环境</title>
     <url>/2021/08/09/gozerolern/</url>
     <content><![CDATA[<ol>
@@ -236,6 +207,35 @@
 ]]></content>
       <categories>
         <category>golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>bug</title>
+    <url>/2021/09/01/bug/</url>
+    <content><![CDATA[<h3 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h3><ul>
+<li><p>vite+vue3.0+antdv。按需引入组件时，代码运行没问题，打包报错</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; <span class="title class_">Card</span> ,<span class="title class_">Dropdown</span>,<span class="title class_">Menu</span>,<span class="title class_">MenuItem</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;ant-design-vue&#x27;</span></span><br><span class="line"> <span class="title class_">Rollup</span> failed to resolve <span class="keyword">import</span> <span class="string">&quot;/XX/XX/XXX&quot;</span> <span class="keyword">from</span> <span class="string">&quot;src/XXX.vue&quot;</span>.</span><br><span class="line"><span class="title class_">This</span> is most likely unintended because it can <span class="keyword">break</span> your application at runtime.</span><br><span class="line"><span class="title class_">If</span> you <span class="keyword">do</span> want to externalize <span class="variable language_">this</span> <span class="variable language_">module</span> explicitly add it to</span><br><span class="line"><span class="string">`build.rollupOptions.external`</span></span><br></pre></td></tr></table></figure>
+<p>报错原因:rollup本身不具备解析能力,<br>解决方案：1.不在imprort中引入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">     <span class="title class_">Menu</span>,</span><br><span class="line">     <span class="title class_">MenuItem</span>: <span class="title class_">Menu</span>.<span class="property">Item</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+<p>使用rollup/plugin-alias配置vite.config.ts，未测试，待验证。</p>
+</li>
+<li><p>同事反应在登录时会出现 Failed to fetch dynamically imported module: xxx.js的报错<br>通过了解，该问题出现在每次版本迭代之后的第一次使用，刷新浏览器即可正常访问，本来想的是可能是浏览器缓存的问题，但是vite打包的资源是加了hash值的，去静态资源里查找并没有找到这个报错的文件，然后发现所有的静态资源都是hash打包，只有index.html没有，与之前的文件名相同。判断是index.html中的缓存请求了之前的静态资源导致了报错。<br>尝试修改nginx配置，默认index.html不缓存。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = /index.html &#123;</span><br><span class="line">   add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尝试重新打包，问题解决</p>
+</li>
+<li><p>双斜杠正则表达式在safari浏览器中报语法错误的问题</p>
+</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="regexp">/XXX/g</span>;</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="keyword">new</span> <span class="title class_">RegExp</span>(“<span class="variable constant_">XXX</span>”, ‘g’);</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>浏览器兼容scorll-bar的问题<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+该方案不能兼容firfox和ie10正确的写法是<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  <span class="attribute">scrollbar-width</span>:none;//兼容firfox</span><br><span class="line">  -ms-<span class="attribute">overflow</span>-style:nene;//兼容ie10</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -261,6 +261,20 @@
 ]]></content>
       <categories>
         <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>js的new关键字实现</title>
+    <url>/2022/10/11/howNew/</url>
+    <content><![CDATA[<h2 id="new的原理"><a href="#new的原理" class="headerlink" title="new的原理"></a>new的原理</h2><ul>
+<li>创建一个新的对象</li>
+<li>添加弗雷属性到新对象并且初始化</li>
+<li>继承父类原型方法，初始化，保存方法的执行结果</li>
+<li>如果执行结果有返回值并且为一个对象，返回结果，否则返回新创建的对象</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">_new</span>(<span class="params">obj, ...rest</span>)&#123;</span><br><span class="line">  <span class="comment">// 基于obj的原型创建一个新的对象</span></span><br><span class="line">  <span class="keyword">const</span> newObj = <span class="title class_">Object</span>.<span class="title function_">create</span>(obj.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加属性到新创建的newObj上, 并获取obj函数执行的结果.</span></span><br><span class="line">  <span class="keyword">const</span> result = obj.<span class="title function_">apply</span>(newObj, rest);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果执行结果有返回值并且是一个对象, 返回执行的结果, 否则, 返回新创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> result === <span class="string">&#x27;object&#x27;</span> ? result : newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>web前端</category>
       </categories>
   </entry>
   <entry>
@@ -296,35 +310,6 @@
 <h2 id="六面HR面"><a href="#六面HR面" class="headerlink" title="六面HR面"></a>六面HR面</h2>]]></content>
       <categories>
         <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>jsxinvue</title>
-    <url>/2021/12/07/jsxinvue/</url>
-    <content><![CDATA[<h2 id="总结一些在vue3-0中使用tsx遇到的问题"><a href="#总结一些在vue3-0中使用tsx遇到的问题" class="headerlink" title="总结一些在vue3.0中使用tsx遇到的问题"></a>总结一些在vue3.0中使用tsx遇到的问题</h2><ul>
-<li>与模板的不同</li>
-</ul>
-<ol>
-<li>在模板语法中setup最终会return一个对象，对象中的属性是setup暴露给模板使用的当return中未定义属性，会报错，在tsx中return类似一个render函数，返回虚拟dom，在使用数据室如果是ref型数据需带上value。</li>
-<li>无法使用v-on语法糖，@也无法绑定的事件，需使用on+事件名的方法绑定事件，事件名首字母需定义为小写，在使用时大写，表现成驼峰命名。</li>
-<li>无法使用v-if或者v-else语法糖，应该遵循jsx的规范使用三目运算符达到v-if的效果</li>
-<li>无法使用：/v-bind绑定数据,应该写成data={value}的形式</li>
-<li>所有的变量使用必须用{}包裹起来</li>
-<li>v-model的写法为v-model:value={data}的形式，文档上有其他的写法，暂时没有用到</li>
-<li>绑定的事件应该为onClick={eventname}的形式如果直接以代码的形式应该为onClick={()=&gt;event}的形式</li>
-<li>插槽的使用，应该使用v-slots代替v-slot<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">A</span> = (<span class="params">props, &#123; slots &#125;</span>) =&gt; (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123; slots.default ? slots.default() : &#x27;foo&#x27; &#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123; slots.bar?.() &#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span> = &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> slots = &#123;</span><br><span class="line">      <span class="attr">bar</span>: <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">A</span> <span class="attr">v-slots</span>=<span class="string">&#123;slots&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">A</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span> = &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> slots = &#123;</span><br><span class="line">      <span class="attr">default</span>: <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line">      <span class="attr">bar</span>: <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">A</span> <span class="attr">v-slots</span>=<span class="string">&#123;slots&#125;</span> /&gt;</span></span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span> = &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">A</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;&#123;</span></span><br><span class="line"><span class="language-xml">            default: () =&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span>,</span></span><br><span class="line"><span class="language-xml">            bar: () =&gt; <span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span>,</span></span><br><span class="line"><span class="language-xml">          &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">A</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">B</span>&gt;</span>&#123;() =&gt; &quot;foo&quot;&#125;<span class="tag">&lt;/<span class="name">B</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>v-show可以正常使用为v-show={boolean}</li>
-<li>其他问题暂未遇到</li>
-</ol>
-<ul>
-<li>bug</li>
-</ul>
-<ol>
-<li>vitejs/plugin-vue-jsx插件 1.1.5版本不支持vue-next-jsx中的v-model语法糖升级到1.3.0解决</li>
-</ol>
-]]></content>
-      <categories>
-        <category>web前端</category>
       </categories>
   </entry>
   <entry>
@@ -364,6 +349,90 @@
       <categories>
         <category>web前端</category>
       </categories>
+  </entry>
+  <entry>
+    <title>jsxinvue</title>
+    <url>/2021/12/07/jsxinvue/</url>
+    <content><![CDATA[<h2 id="总结一些在vue3-0中使用tsx遇到的问题"><a href="#总结一些在vue3-0中使用tsx遇到的问题" class="headerlink" title="总结一些在vue3.0中使用tsx遇到的问题"></a>总结一些在vue3.0中使用tsx遇到的问题</h2><ul>
+<li>与模板的不同</li>
+</ul>
+<ol>
+<li>在模板语法中setup最终会return一个对象，对象中的属性是setup暴露给模板使用的当return中未定义属性，会报错，在tsx中return类似一个render函数，返回虚拟dom，在使用数据室如果是ref型数据需带上value。</li>
+<li>无法使用v-on语法糖，@也无法绑定的事件，需使用on+事件名的方法绑定事件，事件名首字母需定义为小写，在使用时大写，表现成驼峰命名。</li>
+<li>无法使用v-if或者v-else语法糖，应该遵循jsx的规范使用三目运算符达到v-if的效果</li>
+<li>无法使用：/v-bind绑定数据,应该写成data={value}的形式</li>
+<li>所有的变量使用必须用{}包裹起来</li>
+<li>v-model的写法为v-model:value={data}的形式，文档上有其他的写法，暂时没有用到</li>
+<li>绑定的事件应该为onClick={eventname}的形式如果直接以代码的形式应该为onClick={()=&gt;event}的形式</li>
+<li>插槽的使用，应该使用v-slots代替v-slot<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">A</span> = (<span class="params">props, &#123; slots &#125;</span>) =&gt; (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123; slots.default ? slots.default() : &#x27;foo&#x27; &#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123; slots.bar?.() &#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span> = &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> slots = &#123;</span><br><span class="line">      <span class="attr">bar</span>: <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">A</span> <span class="attr">v-slots</span>=<span class="string">&#123;slots&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">A</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span> = &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> slots = &#123;</span><br><span class="line">      <span class="attr">default</span>: <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line">      <span class="attr">bar</span>: <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">A</span> <span class="attr">v-slots</span>=<span class="string">&#123;slots&#125;</span> /&gt;</span></span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">App</span> = &#123;</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">A</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;&#123;</span></span><br><span class="line"><span class="language-xml">            default: () =&gt; <span class="tag">&lt;<span class="name">div</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span>,</span></span><br><span class="line"><span class="language-xml">            bar: () =&gt; <span class="tag">&lt;<span class="name">span</span>&gt;</span>B<span class="tag">&lt;/<span class="name">span</span>&gt;</span>,</span></span><br><span class="line"><span class="language-xml">          &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">A</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">B</span>&gt;</span>&#123;() =&gt; &quot;foo&quot;&#125;<span class="tag">&lt;/<span class="name">B</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>v-show可以正常使用为v-show={boolean}</li>
+<li>其他问题暂未遇到</li>
+</ol>
+<ul>
+<li>bug</li>
+</ul>
+<ol>
+<li>vitejs/plugin-vue-jsx插件 1.1.5版本不支持vue-next-jsx中的v-model语法糖升级到1.3.0解决</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>webgl</title>
+    <url>/2021/12/23/webgl/</url>
+    <content><![CDATA[<h2 id="什么是webgl"><a href="#什么是webgl" class="headerlink" title="什么是webgl"></a>什么是webgl</h2><ul>
+<li>webgl是一种3D绘图标准，把javascript和opengl结合在一起，铜鼓opengl es2.0的一个javascript绑定，通过使用html5的canvas进行绘制。</li>
+<li>webgl的本质是基于光栅化的api，webgl只关注两个方面，矩阵的坐标和投影矩阵的颜色，使用webgl的程序的任务就是实现带有投影矩阵的坐标和颜色的webgl对象</li>
+<li>3D绘图是由三部分组成，光照，摄像机，场景。webgl也是一样</li>
+<li>webgl可以绘制的图形为点,线,三角形，所有复杂的几何图形都是由三角形组成</li>
+<li>webgl绘图的流程，获取顶点坐标-&gt;绘制顶点数组对象-&gt;顶点着色器-&gt;片元着色器。</li>
+</ul>
+<h2 id="创建第一个webgl视图"><a href="#创建第一个webgl视图" class="headerlink" title="创建第一个webgl视图"></a>创建第一个webgl视图</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#glcanvas&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化WebGL上下文</span></span><br><span class="line">  <span class="keyword">const</span> gl = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确认WebGL支持性</span></span><br><span class="line">  <span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用完全不透明的黑色清除所有图像</span></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">  <span class="comment">// 用上面指定的颜色清除缓冲区</span></span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结合MDN和three.js慢慢学习</p>
+]]></content>
+      <tags>
+        <tag>webgl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>webpack+threejs</title>
+    <url>/2021/12/23/webpack/</url>
+    <content><![CDATA[<h1 id="threejsStudy"><a href="#threejsStudy" class="headerlink" title="threejsStudy"></a>threejsStudy</h1><h2 id="使用-webpack-搭建-threejs-项目"><a href="#使用-webpack-搭建-threejs-项目" class="headerlink" title="使用 webpack 搭建 threejs 项目"></a>使用 webpack 搭建 threejs 项目</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add --save-dev webpack</span><br><span class="line">$ yarn add --save-dev webpack-cli</span><br><span class="line">$ yarn add --save-dev webpack-dev-server</span><br><span class="line">$ yarn add three -save</span><br><span class="line">$ yarn add cross-env -save</span><br><span class="line">$ yarn add copy-webpack-plugin -save</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置-webpack-config-js"><a href="#配置-webpack-config-js" class="headerlink" title="配置 webpack,config.js"></a>配置 webpack,config.js</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&quot;webpack&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> copyWebpackPlugin = <span class="built_in">require</span>(<span class="string">&quot;copy-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;/index.js&quot;</span>), <span class="comment">// 入口文件</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;/dist&quot;</span>), <span class="comment">//打包后的文件存放的地方</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>, <span class="comment">//打包后输出文件的文件名</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">static</span>: &#123;</span><br><span class="line">      <span class="attr">directory</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;./dist/src&quot;</span>),</span><br><span class="line">    &#125;, <span class="comment">// 本地服务器所加载文件的目录</span></span><br><span class="line">    <span class="attr">port</span>: <span class="string">&quot;8088&quot;</span>, <span class="comment">// 设置端口号为8088</span></span><br><span class="line">    <span class="attr">historyApiFallback</span>: <span class="literal">true</span>, <span class="comment">//不跳转</span></span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="title class_">HotModuleReplacementPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title function_">copyWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="comment">//使用threejs加载字体json文件的时候使用url路径，打包无法识别，目前没想到更好的办法，打包成静态资源</span></span><br><span class="line">      <span class="attr">patterns</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">from</span>: __dirname + <span class="string">&quot;/src&quot;</span>,</span><br><span class="line">          <span class="attr">to</span>: <span class="string">&quot;./src&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="学习过程，陆续更新。"><a href="#学习过程，陆续更新。" class="headerlink" title="学习过程，陆续更新。"></a>学习过程，陆续更新。</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">FontLoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/FontLoader.js&quot;</span>; <span class="comment">//FontLoader已经不在全局需要局部引入</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>脚手架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在腾讯云搭建个人博客</title>
+    <url>/2022/01/10/tencentyun/</url>
+    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>购买腾讯云的轻量级应用服务器</li>
+<li>选择操作系统宝塔linux面板-q7x6</li>
+<li>选择node.js镜像默认安装有nginx</li>
+<li>重置密码</li>
+<li>mac使用zssh，windows安装Putty远程ssh连接服务器输入刚才设置的账号密码，windows连接端口选为22，mac命令<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh root@xx.xxx..xx.x//root为默认用户名根据实际情况修改</span><br></pre></td></tr></table></figure></li>
+<li>安装git<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum -y install git</span><br></pre></td></tr></table></figure></li>
+<li>找到nginx的配置文件并且修改<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ locate nginx.conf</span><br></pre></td></tr></table></figure></li>
+<li>找到nginx的html路径<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/local/lighthouse/softwares/nginx//腾讯云node.js镜像默认在此路径</span><br></pre></td></tr></table></figure></li>
+<li>clone托管在github仓库中的博客</li>
+<li>重启nginx<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/local/lighthouse/softwares/nginx/sbin</span><br><span class="line">$ ./nginx -s reload</span><br></pre></td></tr></table></figure>
+之后访问端口即可看到博客</li>
+<li>腾讯云申请域名，将域名解析到自己的轻量级应用服务器，之后再根据提示完成域名备案即可</li>
+</ol>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>服务器</tag>
+      </tags>
   </entry>
   <entry>
     <title>JS stringApi</title>
@@ -460,31 +529,6 @@
       </categories>
   </entry>
   <entry>
-    <title>在腾讯云搭建个人博客</title>
-    <url>/2022/01/10/tencentyun/</url>
-    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li>购买腾讯云的轻量级应用服务器</li>
-<li>选择操作系统宝塔linux面板-q7x6</li>
-<li>选择node.js镜像默认安装有nginx</li>
-<li>重置密码</li>
-<li>mac使用zssh，windows安装Putty远程ssh连接服务器输入刚才设置的账号密码，windows连接端口选为22，mac命令<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ ssh root@xx.xxx..xx.x//root为默认用户名根据实际情况修改</span><br></pre></td></tr></table></figure></li>
-<li>安装git<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yum -y install git</span><br></pre></td></tr></table></figure></li>
-<li>找到nginx的配置文件并且修改<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ locate nginx.conf</span><br></pre></td></tr></table></figure></li>
-<li>找到nginx的html路径<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/local/lighthouse/softwares/nginx//腾讯云node.js镜像默认在此路径</span><br></pre></td></tr></table></figure></li>
-<li>clone托管在github仓库中的博客</li>
-<li>重启nginx<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /usr/local/lighthouse/softwares/nginx/sbin</span><br><span class="line">$ ./nginx -s reload</span><br></pre></td></tr></table></figure>
-之后访问端口即可看到博客</li>
-<li>腾讯云申请域名，将域名解析到自己的轻量级应用服务器，之后再根据提示完成域名备案即可</li>
-</ol>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>服务器</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>比较vue和react</title>
     <url>/2021/08/09/vuevsreact/</url>
     <content><![CDATA[<h2 id="VUE和react比较"><a href="#VUE和react比较" class="headerlink" title="VUE和react比较"></a>VUE和react比较</h2><h4 id="单页面应用的发展"><a href="#单页面应用的发展" class="headerlink" title="单页面应用的发展"></a>单页面应用的发展</h4><ul>
@@ -576,35 +620,5 @@
       <categories>
         <category>web前端</category>
       </categories>
-  </entry>
-  <entry>
-    <title>webgl</title>
-    <url>/2021/12/23/webgl/</url>
-    <content><![CDATA[<h2 id="什么是webgl"><a href="#什么是webgl" class="headerlink" title="什么是webgl"></a>什么是webgl</h2><ul>
-<li>webgl是一种3D绘图标准，把javascript和opengl结合在一起，铜鼓opengl es2.0的一个javascript绑定，通过使用html5的canvas进行绘制。</li>
-<li>webgl的本质是基于光栅化的api，webgl只关注两个方面，矩阵的坐标和投影矩阵的颜色，使用webgl的程序的任务就是实现带有投影矩阵的坐标和颜色的webgl对象</li>
-<li>3D绘图是由三部分组成，光照，摄像机，场景。webgl也是一样</li>
-<li>webgl可以绘制的图形为点,线,三角形，所有复杂的几何图形都是由三角形组成</li>
-<li>webgl绘图的流程，获取顶点坐标-&gt;绘制顶点数组对象-&gt;顶点着色器-&gt;片元着色器。</li>
-</ul>
-<h2 id="创建第一个webgl视图"><a href="#创建第一个webgl视图" class="headerlink" title="创建第一个webgl视图"></a>创建第一个webgl视图</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#glcanvas&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化WebGL上下文</span></span><br><span class="line">  <span class="keyword">const</span> gl = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确认WebGL支持性</span></span><br><span class="line">  <span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用完全不透明的黑色清除所有图像</span></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">  <span class="comment">// 用上面指定的颜色清除缓冲区</span></span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结合MDN和three.js慢慢学习</p>
-]]></content>
-      <tags>
-        <tag>webgl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>webpack+threejs</title>
-    <url>/2021/12/23/webpack/</url>
-    <content><![CDATA[<h1 id="threejsStudy"><a href="#threejsStudy" class="headerlink" title="threejsStudy"></a>threejsStudy</h1><h2 id="使用-webpack-搭建-threejs-项目"><a href="#使用-webpack-搭建-threejs-项目" class="headerlink" title="使用 webpack 搭建 threejs 项目"></a>使用 webpack 搭建 threejs 项目</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ yarn add --save-dev webpack</span><br><span class="line">$ yarn add --save-dev webpack-cli</span><br><span class="line">$ yarn add --save-dev webpack-dev-server</span><br><span class="line">$ yarn add three -save</span><br><span class="line">$ yarn add cross-env -save</span><br><span class="line">$ yarn add copy-webpack-plugin -save</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置-webpack-config-js"><a href="#配置-webpack-config-js" class="headerlink" title="配置 webpack,config.js"></a>配置 webpack,config.js</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&quot;webpack&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> copyWebpackPlugin = <span class="built_in">require</span>(<span class="string">&quot;copy-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;/index.js&quot;</span>), <span class="comment">// 入口文件</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;/dist&quot;</span>), <span class="comment">//打包后的文件存放的地方</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>, <span class="comment">//打包后输出文件的文件名</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">static</span>: &#123;</span><br><span class="line">      <span class="attr">directory</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;./dist/src&quot;</span>),</span><br><span class="line">    &#125;, <span class="comment">// 本地服务器所加载文件的目录</span></span><br><span class="line">    <span class="attr">port</span>: <span class="string">&quot;8088&quot;</span>, <span class="comment">// 设置端口号为8088</span></span><br><span class="line">    <span class="attr">historyApiFallback</span>: <span class="literal">true</span>, <span class="comment">//不跳转</span></span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="title class_">HotModuleReplacementPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title function_">copyWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="comment">//使用threejs加载字体json文件的时候使用url路径，打包无法识别，目前没想到更好的办法，打包成静态资源</span></span><br><span class="line">      <span class="attr">patterns</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">from</span>: __dirname + <span class="string">&quot;/src&quot;</span>,</span><br><span class="line">          <span class="attr">to</span>: <span class="string">&quot;./src&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="学习过程，陆续更新。"><a href="#学习过程，陆续更新。" class="headerlink" title="学习过程，陆续更新。"></a>学习过程，陆续更新。</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">FontLoader</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three/examples/jsm/loaders/FontLoader.js&quot;</span>; <span class="comment">//FontLoader已经不在全局需要局部引入</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>脚手架</tag>
-      </tags>
   </entry>
 </search>
