@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>记录一个annimate.css的问题</title>
+    <url>/2022/01/10/annimate-css/</url>
+    <content><![CDATA[<h2 id="annimate-css版本4-1-1在某些电脑上无法显示动画效果"><a href="#annimate-css版本4-1-1在某些电脑上无法显示动画效果" class="headerlink" title="annimate.css版本4.1.1在某些电脑上无法显示动画效果"></a>annimate.css版本4.1.1在某些电脑上无法显示动画效果</h2><ol>
+<li>排查问题，浏览器没有报错，不同的浏览器内核也没有差异，只是某些同事的电脑可以显示某些同事的电脑不能显示。</li>
+<li>估计可能是操作系统设置的问题，查看不能显示的同事的系统设置，发现在性能设置中关闭了显示窗口内动画效果选项。</li>
+<li>方案<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">可搜索 外观与性能 或</span><br><span class="line">win+R %windir%\system32\SystemPropertiesPerformance.exe</span><br></pre></td></tr></table></figure>
+在视觉效果中勾选窗口内的动画空间和元素，即可</li>
+<li>了解到annimate之前的版本无此问题，是在4.0之后的版本出现。将版本回退问题解决</li>
+</ol>
+]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>理解什么是CMDB</title>
     <url>/2021/12/15/CMDB/</url>
     <content><![CDATA[<h2 id="什么是-CMDB"><a href="#什么是-CMDB" class="headerlink" title="什么是 CMDB"></a>什么是 CMDB</h2><p>CMDB 是 Configuration Management Database 的简称，中文翻译成配置管理数据库,是一个逻辑数据库，包含了配置项全生命周期及配置项之间的关系（物理关系，时事通讯关系，非实时通讯关系，依赖关系）</p>
@@ -24,22 +42,33 @@
       </categories>
   </entry>
   <entry>
-    <title>记录一个annimate.css的问题</title>
-    <url>/2022/01/10/annimate-css/</url>
-    <content><![CDATA[<h2 id="annimate-css版本4-1-1在某些电脑上无法显示动画效果"><a href="#annimate-css版本4-1-1在某些电脑上无法显示动画效果" class="headerlink" title="annimate.css版本4.1.1在某些电脑上无法显示动画效果"></a>annimate.css版本4.1.1在某些电脑上无法显示动画效果</h2><ol>
-<li>排查问题，浏览器没有报错，不同的浏览器内核也没有差异，只是某些同事的电脑可以显示某些同事的电脑不能显示。</li>
-<li>估计可能是操作系统设置的问题，查看不能显示的同事的系统设置，发现在性能设置中关闭了显示窗口内动画效果选项。</li>
-<li>方案<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">可搜索 外观与性能 或</span><br><span class="line">win+R %windir%\system32\SystemPropertiesPerformance.exe</span><br></pre></td></tr></table></figure>
-在视觉效果中勾选窗口内的动画空间和元素，即可</li>
-<li>了解到annimate之前的版本无此问题，是在4.0之后的版本出现。将版本回退问题解决</li>
-</ol>
+    <title>bug</title>
+    <url>/2021/09/01/bug/</url>
+    <content><![CDATA[<h3 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h3><ul>
+<li><p>vite+vue3.0+antdv。按需引入组件时，代码运行没问题，打包报错</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; <span class="title class_">Card</span> ,<span class="title class_">Dropdown</span>,<span class="title class_">Menu</span>,<span class="title class_">MenuItem</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;ant-design-vue&#x27;</span></span><br><span class="line"> <span class="title class_">Rollup</span> failed to resolve <span class="keyword">import</span> <span class="string">&quot;/XX/XX/XXX&quot;</span> <span class="keyword">from</span> <span class="string">&quot;src/XXX.vue&quot;</span>.</span><br><span class="line"><span class="title class_">This</span> is most likely unintended because it can <span class="keyword">break</span> your application at runtime.</span><br><span class="line"><span class="title class_">If</span> you <span class="keyword">do</span> want to externalize <span class="variable language_">this</span> <span class="variable language_">module</span> explicitly add it to</span><br><span class="line"><span class="string">`build.rollupOptions.external`</span></span><br></pre></td></tr></table></figure>
+<p>报错原因:rollup本身不具备解析能力,<br>解决方案：1.不在imprort中引入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">     <span class="title class_">Menu</span>,</span><br><span class="line">     <span class="title class_">MenuItem</span>: <span class="title class_">Menu</span>.<span class="property">Item</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+<p>使用rollup/plugin-alias配置vite.config.ts，未测试，待验证。</p>
+</li>
+<li><p>同事反应在登录时会出现 Failed to fetch dynamically imported module: xxx.js的报错<br>通过了解，该问题出现在每次版本迭代之后的第一次使用，刷新浏览器即可正常访问，本来想的是可能是浏览器缓存的问题，但是vite打包的资源是加了hash值的，去静态资源里查找并没有找到这个报错的文件，然后发现所有的静态资源都是hash打包，只有index.html没有，与之前的文件名相同。判断是index.html中的缓存请求了之前的静态资源导致了报错。<br>尝试修改nginx配置，默认index.html不缓存。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = /index.html &#123;</span><br><span class="line">   add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尝试重新打包，问题解决</p>
+</li>
+<li><p>双斜杠正则表达式在safari浏览器中报语法错误的问题</p>
+</li>
+</ul>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="regexp">/XXX/g</span>;</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="keyword">new</span> <span class="title class_">RegExp</span>(“<span class="variable constant_">XXX</span>”, ‘g’);</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>浏览器兼容scorll-bar的问题<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+该方案不能兼容firfox和ie10正确的写法是<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  <span class="attribute">scrollbar-width</span>:none;//兼容firfox</span><br><span class="line">  -ms-<span class="attribute">overflow</span>-style:nene;//兼容ie10</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
-        <category>web前端</category>
+        <category>其他</category>
       </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
   </entry>
   <entry>
     <title>antv g2 plot 动态生成报表设计方案</title>
@@ -124,35 +153,6 @@
       </categories>
   </entry>
   <entry>
-    <title>bug</title>
-    <url>/2021/09/01/bug/</url>
-    <content><![CDATA[<h3 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h3><ul>
-<li><p>vite+vue3.0+antdv。按需引入组件时，代码运行没问题，打包报错</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; <span class="title class_">Card</span> ,<span class="title class_">Dropdown</span>,<span class="title class_">Menu</span>,<span class="title class_">MenuItem</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;ant-design-vue&#x27;</span></span><br><span class="line"> <span class="title class_">Rollup</span> failed to resolve <span class="keyword">import</span> <span class="string">&quot;/XX/XX/XXX&quot;</span> <span class="keyword">from</span> <span class="string">&quot;src/XXX.vue&quot;</span>.</span><br><span class="line"><span class="title class_">This</span> is most likely unintended because it can <span class="keyword">break</span> your application at runtime.</span><br><span class="line"><span class="title class_">If</span> you <span class="keyword">do</span> want to externalize <span class="variable language_">this</span> <span class="variable language_">module</span> explicitly add it to</span><br><span class="line"><span class="string">`build.rollupOptions.external`</span></span><br></pre></td></tr></table></figure>
-<p>报错原因:rollup本身不具备解析能力,<br>解决方案：1.不在imprort中引入</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">     <span class="title class_">Menu</span>,</span><br><span class="line">     <span class="title class_">MenuItem</span>: <span class="title class_">Menu</span>.<span class="property">Item</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
-<p>使用rollup/plugin-alias配置vite.config.ts，未测试，待验证。</p>
-</li>
-<li><p>同事反应在登录时会出现 Failed to fetch dynamically imported module: xxx.js的报错<br>通过了解，该问题出现在每次版本迭代之后的第一次使用，刷新浏览器即可正常访问，本来想的是可能是浏览器缓存的问题，但是vite打包的资源是加了hash值的，去静态资源里查找并没有找到这个报错的文件，然后发现所有的静态资源都是hash打包，只有index.html没有，与之前的文件名相同。判断是index.html中的缓存请求了之前的静态资源导致了报错。<br>尝试修改nginx配置，默认index.html不缓存。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = /index.html &#123;</span><br><span class="line">   add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尝试重新打包，问题解决</p>
-</li>
-<li><p>双斜杠正则表达式在safari浏览器中报语法错误的问题</p>
-</li>
-</ul>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="regexp">/XXX/g</span>;</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="keyword">new</span> <span class="title class_">RegExp</span>(“<span class="variable constant_">XXX</span>”, ‘g’);</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>浏览器兼容scorll-bar的问题<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-该方案不能兼容firfox和ie10正确的写法是<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  <span class="attribute">scrollbar-width</span>:none;//兼容firfox</span><br><span class="line">  -ms-<span class="attribute">overflow</span>-style:nene;//兼容ie10</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title>golang结构体</title>
     <url>/2021/09/26/golangstruct/</url>
     <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
@@ -180,6 +180,47 @@
 ]]></content>
       <categories>
         <category>golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>windows配置golang环境</title>
+    <url>/2021/08/09/gozerolern/</url>
+    <content><![CDATA[<ol>
+<li><a href="https://studygolang.com/dl">官网</a>下载golang</li>
+<li>环境配置<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GOPATH: //go 的工作目录</span><br><span class="line">GOROOT：//go 的安装目录</span><br><span class="line">GOBIN：//go 的bin文件目录</span><br><span class="line">GO111MODULE： //go mod 开关 on为开启go mod</span><br><span class="line">GOPROXY=https://goproxy.cn,direct // https://goproxy.cn,direct 国内代理</span><br></pre></td></tr></table></figure></li>
+<li>GOPATH:早期golang的依赖管理方式，配置bin src packege三个文件夹，src下存放项目，bin存放第三方库，package存放包。之后有go mod之后这种方式就很少使用了。</li>
+<li>go mod:go mod可以完全替代GOPATH设置。只需要go env -w GO111MODULE=on开启go mod<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ go mod init myproject</span><br></pre></td></tr></table></figure>
+会生成一个go.mod文件作为依赖人口文件，在之后新引入的模块可以使用绝对路径来获取。不需要在将项目放在GOPATH下的src目录下。<br>更新依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ go mod tidy</span><br></pre></td></tr></table></figure></li>
+<li>其他一些用到过的命令<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ go run xxx //运行当前文件</span><br><span class="line">$ go build xxx //编译当前文件为一个可执行的.exe文件</span><br><span class="line">$ go get xxx //获取远程资源，存放在GOPATH的bin或者package文件夹下取决去拉取的文件是否可以执行</span><br><span class="line">$ go install  生成可执行文件。</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何使用hexo在github上搭建个人博客</title>
+    <url>/2021/08/09/hexo/</url>
+    <content><![CDATA[<h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p> 安装 <a href="https://hexo.io/docs/">hexo</a>需要node环境</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>新建hexo项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在heox主页找到自己喜欢的模板，download，将文件夹放在新搭建的博客中的themes文件夹下。<br>将根目录的_config.yml文件设置</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme</span>: diaspora</span><br></pre></td></tr></table></figure>
+<p>如何新建博客，如何使用分类和标签,参考官方文档和主题reademe文件</p>
+<h3 id="生成静态资源"><a href="#生成静态资源" class="headerlink" title="生成静态资源"></a>生成静态资源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate </span><br></pre></td></tr></table></figure>
+<h3 id="启动本地服务"><a href="#启动本地服务" class="headerlink" title="启动本地服务"></a>启动本地服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>默认端口为4000</p>
+<h3 id="如何在github上搭建博客"><a href="#如何在github上搭建博客" class="headerlink" title="如何在github上搭建博客"></a>如何在github上搭建博客</h3><p> <a href="https://zhuanlan.zhihu.com/p/28321740">参考知乎</a>由于hexo项目需要编译成静态资源才能被github.io识别，所以建议新建两个仓库将hexo项目设定为privite。或者可以在io下新建子分支。</p>
+<h3 id="本地打包上传"><a href="#本地打包上传" class="headerlink" title="本地打包上传"></a>本地打包上传</h3><p>需要在根目录下配置仓库地址，更多配置参考官方文档</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="comment">#上传方式</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="comment">#你的github仓库地址</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">your</span> <span class="string">github</span> <span class="string">address</span></span><br><span class="line">  <span class="comment">#分支名</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span> </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy </span><br></pre></td></tr></table></figure>
+<p>之后访问 username.github.io就可以看到个人博客了。</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>hexo的整体配置例如仓库地址，主题，端口等在根目录下的_config.yml文件。而样式配置例如路径，图片，标题等，在主题内部的_config.yml文件下配置。</p>
+]]></content>
+      <categories>
+        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -242,22 +283,6 @@
       </categories>
   </entry>
   <entry>
-    <title>windows配置golang环境</title>
-    <url>/2021/08/09/gozerolern/</url>
-    <content><![CDATA[<ol>
-<li><a href="https://studygolang.com/dl">官网</a>下载golang</li>
-<li>环境配置<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">GOPATH: //go 的工作目录</span><br><span class="line">GOROOT：//go 的安装目录</span><br><span class="line">GOBIN：//go 的bin文件目录</span><br><span class="line">GO111MODULE： //go mod 开关 on为开启go mod</span><br><span class="line">GOPROXY=https://goproxy.cn,direct // https://goproxy.cn,direct 国内代理</span><br></pre></td></tr></table></figure></li>
-<li>GOPATH:早期golang的依赖管理方式，配置bin src packege三个文件夹，src下存放项目，bin存放第三方库，package存放包。之后有go mod之后这种方式就很少使用了。</li>
-<li>go mod:go mod可以完全替代GOPATH设置。只需要go env -w GO111MODULE=on开启go mod<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ go mod init myproject</span><br></pre></td></tr></table></figure>
-会生成一个go.mod文件作为依赖人口文件，在之后新引入的模块可以使用绝对路径来获取。不需要在将项目放在GOPATH下的src目录下。<br>更新依赖<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ go mod tidy</span><br></pre></td></tr></table></figure></li>
-<li>其他一些用到过的命令<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ go run xxx //运行当前文件</span><br><span class="line">$ go build xxx //编译当前文件为一个可执行的.exe文件</span><br><span class="line">$ go get xxx //获取远程资源，存放在GOPATH的bin或者package文件夹下取决去拉取的文件是否可以执行</span><br><span class="line">$ go install  生成可执行文件。</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>js的new关键字实现</title>
     <url>/2022/10/11/howNew/</url>
     <content><![CDATA[<h2 id="new的原理"><a href="#new的原理" class="headerlink" title="new的原理"></a>new的原理</h2><ul>
@@ -269,31 +294,6 @@
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">_new</span>(<span class="params">obj, ...rest</span>)&#123;</span><br><span class="line">  <span class="comment">// 基于obj的原型创建一个新的对象</span></span><br><span class="line">  <span class="keyword">const</span> newObj = <span class="title class_">Object</span>.<span class="title function_">create</span>(obj.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加属性到新创建的newObj上, 并获取obj函数执行的结果.</span></span><br><span class="line">  <span class="keyword">const</span> result = obj.<span class="title function_">apply</span>(newObj, rest);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果执行结果有返回值并且是一个对象, 返回执行的结果, 否则, 返回新创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> result === <span class="string">&#x27;object&#x27;</span> ? result : newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>web前端</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何使用hexo在github上搭建个人博客</title>
-    <url>/2021/08/09/hexo/</url>
-    <content><![CDATA[<h3 id="install"><a href="#install" class="headerlink" title="install"></a>install</h3><p> 安装 <a href="https://hexo.io/docs/">hexo</a>需要node环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>新建hexo项目</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>在heox主页找到自己喜欢的模板，download，将文件夹放在新搭建的博客中的themes文件夹下。<br>将根目录的_config.yml文件设置</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme</span>: diaspora</span><br></pre></td></tr></table></figure>
-<p>如何新建博客，如何使用分类和标签,参考官方文档和主题reademe文件</p>
-<h3 id="生成静态资源"><a href="#生成静态资源" class="headerlink" title="生成静态资源"></a>生成静态资源</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate </span><br></pre></td></tr></table></figure>
-<h3 id="启动本地服务"><a href="#启动本地服务" class="headerlink" title="启动本地服务"></a>启动本地服务</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>默认端口为4000</p>
-<h3 id="如何在github上搭建博客"><a href="#如何在github上搭建博客" class="headerlink" title="如何在github上搭建博客"></a>如何在github上搭建博客</h3><p> <a href="https://zhuanlan.zhihu.com/p/28321740">参考知乎</a>由于hexo项目需要编译成静态资源才能被github.io识别，所以建议新建两个仓库将hexo项目设定为privite。或者可以在io下新建子分支。</p>
-<h3 id="本地打包上传"><a href="#本地打包上传" class="headerlink" title="本地打包上传"></a>本地打包上传</h3><p>需要在根目录下配置仓库地址，更多配置参考官方文档</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="comment">#上传方式</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="comment">#你的github仓库地址</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">your</span> <span class="string">github</span> <span class="string">address</span></span><br><span class="line">  <span class="comment">#分支名</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span> </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy </span><br></pre></td></tr></table></figure>
-<p>之后访问 username.github.io就可以看到个人博客了。</p>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>hexo的整体配置例如仓库地址，主题，端口等在根目录下的_config.yml文件。而样式配置例如路径，图片，标题等，在主题内部的_config.yml文件下配置。</p>
-]]></content>
-      <categories>
-        <category>其他</category>
       </categories>
   </entry>
   <entry>
@@ -518,23 +518,6 @@
       </tags>
   </entry>
   <entry>
-    <title>webgl</title>
-    <url>/2021/12/23/webgl/</url>
-    <content><![CDATA[<h2 id="什么是webgl"><a href="#什么是webgl" class="headerlink" title="什么是webgl"></a>什么是webgl</h2><ul>
-<li>webgl是一种3D绘图标准，把javascript和opengl结合在一起，铜鼓opengl es2.0的一个javascript绑定，通过使用html5的canvas进行绘制。</li>
-<li>webgl的本质是基于光栅化的api，webgl只关注两个方面，矩阵的坐标和投影矩阵的颜色，使用webgl的程序的任务就是实现带有投影矩阵的坐标和颜色的webgl对象</li>
-<li>3D绘图是由三部分组成，光照，摄像机，场景。webgl也是一样</li>
-<li>webgl可以绘制的图形为点,线,三角形，所有复杂的几何图形都是由三角形组成</li>
-<li>webgl绘图的流程，获取顶点坐标-&gt;绘制顶点数组对象-&gt;顶点着色器-&gt;片元着色器。</li>
-</ul>
-<h2 id="创建第一个webgl视图"><a href="#创建第一个webgl视图" class="headerlink" title="创建第一个webgl视图"></a>创建第一个webgl视图</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#glcanvas&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化WebGL上下文</span></span><br><span class="line">  <span class="keyword">const</span> gl = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确认WebGL支持性</span></span><br><span class="line">  <span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用完全不透明的黑色清除所有图像</span></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">  <span class="comment">// 用上面指定的颜色清除缓冲区</span></span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结合MDN和three.js慢慢学习</p>
-]]></content>
-      <tags>
-        <tag>webgl</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>比较vue和react</title>
     <url>/2021/08/09/vuevsreact/</url>
     <content><![CDATA[<h2 id="VUE和react比较"><a href="#VUE和react比较" class="headerlink" title="VUE和react比较"></a>VUE和react比较</h2><h4 id="单页面应用的发展"><a href="#单页面应用的发展" class="headerlink" title="单页面应用的发展"></a>单页面应用的发展</h4><ul>
@@ -626,6 +609,23 @@
       <categories>
         <category>web前端</category>
       </categories>
+  </entry>
+  <entry>
+    <title>webgl</title>
+    <url>/2021/12/23/webgl/</url>
+    <content><![CDATA[<h2 id="什么是webgl"><a href="#什么是webgl" class="headerlink" title="什么是webgl"></a>什么是webgl</h2><ul>
+<li>webgl是一种3D绘图标准，把javascript和opengl结合在一起，铜鼓opengl es2.0的一个javascript绑定，通过使用html5的canvas进行绘制。</li>
+<li>webgl的本质是基于光栅化的api，webgl只关注两个方面，矩阵的坐标和投影矩阵的颜色，使用webgl的程序的任务就是实现带有投影矩阵的坐标和颜色的webgl对象</li>
+<li>3D绘图是由三部分组成，光照，摄像机，场景。webgl也是一样</li>
+<li>webgl可以绘制的图形为点,线,三角形，所有复杂的几何图形都是由三角形组成</li>
+<li>webgl绘图的流程，获取顶点坐标-&gt;绘制顶点数组对象-&gt;顶点着色器-&gt;片元着色器。</li>
+</ul>
+<h2 id="创建第一个webgl视图"><a href="#创建第一个webgl视图" class="headerlink" title="创建第一个webgl视图"></a>创建第一个webgl视图</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#glcanvas&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化WebGL上下文</span></span><br><span class="line">  <span class="keyword">const</span> gl = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确认WebGL支持性</span></span><br><span class="line">  <span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用完全不透明的黑色清除所有图像</span></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">  <span class="comment">// 用上面指定的颜色清除缓冲区</span></span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结合MDN和three.js慢慢学习</p>
+]]></content>
+      <tags>
+        <tag>webgl</tag>
+      </tags>
   </entry>
   <entry>
     <title>webpack+threejs</title>
