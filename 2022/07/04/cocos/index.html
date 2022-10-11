@@ -10,10 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="关于最近cocos的一些体会心得编辑器
-预制体：
-
-"> 
+    <meta name="description" content="关于最近cocos学习的记录编辑器
+预制体：在编辑器中整合资源同步使用节点，必须有一个根节点，只有根节点之下的元素会被保存，内置的组件，有sprit，label,button,layout等常用
+脚,"> 
     <meta name="author" content="John Doe"> 
     <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -55,8 +54,27 @@
 
         </div>
         <div class="content markdown">
-            <h3 id="关于最近cocos的一些体会心得"><a href="#关于最近cocos的一些体会心得" class="headerlink" title="关于最近cocos的一些体会心得"></a>关于最近cocos的一些体会心得</h3><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
-<li>预制体：</li>
+            <h3 id="关于最近cocos学习的记录"><a href="#关于最近cocos学习的记录" class="headerlink" title="关于最近cocos学习的记录"></a>关于最近cocos学习的记录</h3><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
+<li>预制体：在编辑器中整合资源同步使用节点，必须有一个根节点，只有根节点之下的元素会被保存，内置的组件，有sprit，label,button,layout等常用</li>
+<li>脚本：使用ts编辑的脚本，继承cc类，可以在编辑器中绑定在预制体中，当预制体被加载脚本就会执行。</li>
+<li>组件：在预制体中添加的组件，分为ui组件，渲染组件,Mesh组件，碰撞组件，物理组件，用户组件，用户脚本组件等，其中用户脚本组件就是我们需要编辑的脚本。</li>
+<li>场景：cocos的工作流程是以数据驱动为核心，每个项目都有一个默认场景打开demo在assets文件夹下找到Hello World 默认场景。</li>
+<li>动画：目前我接触过的有spine动画，annimation序列帧，一些简单的动效可以在脚本中使用缓动和annimation实现。</li>
+</ul>
+<h2 id="游戏结构"><a href="#游戏结构" class="headerlink" title="游戏结构"></a>游戏结构</h2><ul>
+<li>ui：封装的view方法用于加载不同的场景预制体和panal。</li>
+<li>event：事件，通过dispatch和addEventListener，removeEventListener全局管理事件系统</li>
+<li>碰撞检测系统，根据cocos的分组碰撞检测，派发事件执行不同的结果</li>
+<li>audio：封装cocos内置的音频系统。</li>
+<li>避障：没接触，后续有接触再补充。</li>
+<li>网络：使用websoket以及json格式的数据交互。</li>
+</ul>
+<h2 id="脚本的编写"><a href="#脚本的编写" class="headerlink" title="脚本的编写"></a>脚本的编写</h2><ul>
+<li>生命周期：onload，脚本加载完成时执行，onDestroy，在脚本销毁时执行。update，每一帧都会执行。</li>
+<li>方法：脚本实际上是一个类，类的方法可以在生命周期里执行，可以监听事件执行方法，也可以通过编辑器绑定事件执行。</li>
+<li>脚本需要继承cc类才可以在编辑器中改选中绑定到预制体中。</li>
+<li>绑定的事件需要再组件销毁之后取消绑定。</li>
+<li>一个预制体可以绑定多个不同的脚本，也可以动态添加删除脚本。</li>
 </ul>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -93,7 +111,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%80%E8%BF%91cocos%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BD%93%E4%BC%9A%E5%BF%83%E5%BE%97"><span class="toc-number">1.</span> <span class="toc-text">关于最近cocos的一些体会心得</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number"></span> <span class="toc-text">编辑器</span></a>	
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%80%E8%BF%91cocos%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">关于最近cocos学习的记录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number"></span> <span class="toc-text">编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BB%93%E6%9E%84"><span class="toc-number"></span> <span class="toc-text">游戏结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number"></span> <span class="toc-text">脚本的编写</span></a>	
         </div>
     
 </div>
