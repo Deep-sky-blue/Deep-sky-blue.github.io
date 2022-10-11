@@ -64,33 +64,34 @@
       </categories>
   </entry>
   <entry>
-    <title>bug</title>
-    <url>/2021/09/01/bug/</url>
-    <content><![CDATA[<h3 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h3><ul>
-<li><p>vite+vue3.0+antdv。按需引入组件时，代码运行没问题，打包报错</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; <span class="title class_">Card</span> ,<span class="title class_">Dropdown</span>,<span class="title class_">Menu</span>,<span class="title class_">MenuItem</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;ant-design-vue&#x27;</span></span><br><span class="line"> <span class="title class_">Rollup</span> failed to resolve <span class="keyword">import</span> <span class="string">&quot;/XX/XX/XXX&quot;</span> <span class="keyword">from</span> <span class="string">&quot;src/XXX.vue&quot;</span>.</span><br><span class="line"><span class="title class_">This</span> is most likely unintended because it can <span class="keyword">break</span> your application at runtime.</span><br><span class="line"><span class="title class_">If</span> you <span class="keyword">do</span> want to externalize <span class="variable language_">this</span> <span class="variable language_">module</span> explicitly add it to</span><br><span class="line"><span class="string">`build.rollupOptions.external`</span></span><br></pre></td></tr></table></figure>
-<p>报错原因:rollup本身不具备解析能力,<br>解决方案：1.不在imprort中引入</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">     <span class="title class_">Menu</span>,</span><br><span class="line">     <span class="title class_">MenuItem</span>: <span class="title class_">Menu</span>.<span class="property">Item</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
-<p>使用rollup/plugin-alias配置vite.config.ts，未测试，待验证。</p>
-</li>
-<li><p>同事反应在登录时会出现 Failed to fetch dynamically imported module: xxx.js的报错<br>通过了解，该问题出现在每次版本迭代之后的第一次使用，刷新浏览器即可正常访问，本来想的是可能是浏览器缓存的问题，但是vite打包的资源是加了hash值的，去静态资源里查找并没有找到这个报错的文件，然后发现所有的静态资源都是hash打包，只有index.html没有，与之前的文件名相同。判断是index.html中的缓存请求了之前的静态资源导致了报错。<br>尝试修改nginx配置，默认index.html不缓存。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = /index.html &#123;</span><br><span class="line">   add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>尝试重新打包，问题解决</p>
-</li>
-<li><p>双斜杠正则表达式在safari浏览器中报语法错误的问题</p>
-</li>
+    <title>cocos</title>
+    <url>/2022/07/04/cocos/</url>
+    <content><![CDATA[<h3 id="关于最近cocos学习的记录"><a href="#关于最近cocos学习的记录" class="headerlink" title="关于最近cocos学习的记录"></a>关于最近cocos学习的记录</h3><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
+<li>预制体：在编辑器中整合资源同步使用节点，必须有一个根节点，只有根节点之下的元素会被保存，内置的组件，有sprit，label,button,layout等常用</li>
+<li>脚本：使用ts编辑的脚本，继承cc类，可以在编辑器中绑定在预制体中，当预制体被加载脚本就会执行。</li>
+<li>组件：在预制体中添加的组件，分为ui组件，渲染组件,Mesh组件，碰撞组件，物理组件，用户组件，用户脚本组件等，其中用户脚本组件就是我们需要编辑的脚本。</li>
+<li>场景：cocos的工作流程是以数据驱动为核心，每个项目都有一个默认场景打开demo在assets文件夹下找到Hello World 默认场景。</li>
+<li>动画：目前我接触过的有spine动画，annimation序列帧，一些简单的动效可以在脚本中使用缓动和annimation实现。</li>
 </ul>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="regexp">/XXX/g</span>;</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="keyword">new</span> <span class="title class_">RegExp</span>(“<span class="variable constant_">XXX</span>”, ‘g’);</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>浏览器兼容scorll-bar的问题<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-该方案不能兼容firfox和ie10正确的写法是<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  <span class="attribute">scrollbar-width</span>:none;//兼容firfox</span><br><span class="line">  -ms-<span class="attribute">overflow</span>-style:nene;//兼容ie10</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="游戏结构"><a href="#游戏结构" class="headerlink" title="游戏结构"></a>游戏结构</h2><ul>
+<li>ui：封装的view方法用于加载不同的场景预制体和panal。</li>
+<li>event：事件，通过dispatch和addEventListener，removeEventListener全局管理事件系统</li>
+<li>碰撞检测系统，根据cocos的分组碰撞检测，派发事件执行不同的结果</li>
+<li>audio：封装cocos内置的音频系统。</li>
+<li>避障：没接触，后续有接触再补充。</li>
+<li>网络：使用websoket以及json格式的数据交互。</li>
+</ul>
+<h2 id="脚本的编写"><a href="#脚本的编写" class="headerlink" title="脚本的编写"></a>脚本的编写</h2><ul>
+<li>生命周期：onload，脚本加载完成时执行，onDestroy，在脚本销毁时执行。update，每一帧都会执行。</li>
+<li>方法：脚本实际上是一个类，类的方法可以在生命周期里执行，可以监听事件执行方法，也可以通过编辑器绑定事件执行。</li>
+<li>脚本需要继承cc类才可以在编辑器中改选中绑定到预制体中。</li>
+<li>绑定的事件需要再组件销毁之后取消绑定。</li>
+<li>一个预制体可以绑定多个不同的脚本，也可以动态添加删除脚本。</li>
 </ul>
 ]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
+      <tags>
+        <tag>coocs</tag>
+      </tags>
   </entry>
   <entry>
     <title>generator</title>
@@ -123,34 +124,63 @@
       </categories>
   </entry>
   <entry>
-    <title>cocos</title>
-    <url>/2022/07/04/cocos/</url>
-    <content><![CDATA[<h3 id="关于最近cocos学习的记录"><a href="#关于最近cocos学习的记录" class="headerlink" title="关于最近cocos学习的记录"></a>关于最近cocos学习的记录</h3><h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
-<li>预制体：在编辑器中整合资源同步使用节点，必须有一个根节点，只有根节点之下的元素会被保存，内置的组件，有sprit，label,button,layout等常用</li>
-<li>脚本：使用ts编辑的脚本，继承cc类，可以在编辑器中绑定在预制体中，当预制体被加载脚本就会执行。</li>
-<li>组件：在预制体中添加的组件，分为ui组件，渲染组件,Mesh组件，碰撞组件，物理组件，用户组件，用户脚本组件等，其中用户脚本组件就是我们需要编辑的脚本。</li>
-<li>场景：cocos的工作流程是以数据驱动为核心，每个项目都有一个默认场景打开demo在assets文件夹下找到Hello World 默认场景。</li>
-<li>动画：目前我接触过的有spine动画，annimation序列帧，一些简单的动效可以在脚本中使用缓动和annimation实现。</li>
+    <title>bug</title>
+    <url>/2021/09/01/bug/</url>
+    <content><![CDATA[<h3 id="bug记录"><a href="#bug记录" class="headerlink" title="bug记录"></a>bug记录</h3><ul>
+<li><p>vite+vue3.0+antdv。按需引入组件时，代码运行没问题，打包报错</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">import</span> &#123; <span class="title class_">Card</span> ,<span class="title class_">Dropdown</span>,<span class="title class_">Menu</span>,<span class="title class_">MenuItem</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;ant-design-vue&#x27;</span></span><br><span class="line"> <span class="title class_">Rollup</span> failed to resolve <span class="keyword">import</span> <span class="string">&quot;/XX/XX/XXX&quot;</span> <span class="keyword">from</span> <span class="string">&quot;src/XXX.vue&quot;</span>.</span><br><span class="line"><span class="title class_">This</span> is most likely unintended because it can <span class="keyword">break</span> your application at runtime.</span><br><span class="line"><span class="title class_">If</span> you <span class="keyword">do</span> want to externalize <span class="variable language_">this</span> <span class="variable language_">module</span> explicitly add it to</span><br><span class="line"><span class="string">`build.rollupOptions.external`</span></span><br></pre></td></tr></table></figure>
+<p>报错原因:rollup本身不具备解析能力,<br>解决方案：1.不在imprort中引入</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">     <span class="title class_">Menu</span>,</span><br><span class="line">     <span class="title class_">MenuItem</span>: <span class="title class_">Menu</span>.<span class="property">Item</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+<p>使用rollup/plugin-alias配置vite.config.ts，未测试，待验证。</p>
+</li>
+<li><p>同事反应在登录时会出现 Failed to fetch dynamically imported module: xxx.js的报错<br>通过了解，该问题出现在每次版本迭代之后的第一次使用，刷新浏览器即可正常访问，本来想的是可能是浏览器缓存的问题，但是vite打包的资源是加了hash值的，去静态资源里查找并没有找到这个报错的文件，然后发现所有的静态资源都是hash打包，只有index.html没有，与之前的文件名相同。判断是index.html中的缓存请求了之前的静态资源导致了报错。<br>尝试修改nginx配置，默认index.html不缓存。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location = /index.html &#123;</span><br><span class="line">   add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尝试重新打包，问题解决</p>
+</li>
+<li><p>双斜杠正则表达式在safari浏览器中报语法错误的问题</p>
+</li>
 </ul>
-<h2 id="游戏结构"><a href="#游戏结构" class="headerlink" title="游戏结构"></a>游戏结构</h2><ul>
-<li>ui：封装的view方法用于加载不同的场景预制体和panal。</li>
-<li>event：事件，通过dispatch和addEventListener，removeEventListener全局管理事件系统</li>
-<li>碰撞检测系统，根据cocos的分组碰撞检测，派发事件执行不同的结果</li>
-<li>audio：封装cocos内置的音频系统。</li>
-<li>避障：没接触，后续有接触再补充。</li>
-<li>网络：使用websoket以及json格式的数据交互。</li>
-</ul>
-<h2 id="脚本的编写"><a href="#脚本的编写" class="headerlink" title="脚本的编写"></a>脚本的编写</h2><ul>
-<li>生命周期：onload，脚本加载完成时执行，onDestroy，在脚本销毁时执行。update，每一帧都会执行。</li>
-<li>方法：脚本实际上是一个类，类的方法可以在生命周期里执行，可以监听事件执行方法，也可以通过编辑器绑定事件执行。</li>
-<li>脚本需要继承cc类才可以在编辑器中改选中绑定到预制体中。</li>
-<li>绑定的事件需要再组件销毁之后取消绑定。</li>
-<li>一个预制体可以绑定多个不同的脚本，也可以动态添加删除脚本。</li>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="regexp">/XXX/g</span>;</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">let</span> regExp = <span class="keyword">new</span> <span class="title class_">RegExp</span>(“<span class="variable constant_">XXX</span>”, ‘g’);</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>浏览器兼容scorll-bar的问题<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+该方案不能兼容firfox和ie10正确的写法是<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  <span class="attribute">scrollbar-width</span>:none;//兼容firfox</span><br><span class="line">  -ms-<span class="attribute">overflow</span>-style:nene;//兼容ie10</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.a</span>::-webket-scrollbar&#123;</span><br><span class="line">  <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>coocs</tag>
-      </tags>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>golang结构体</title>
+    <url>/2021/09/26/golangstruct/</url>
+    <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>golang 中没有类的概念，所以使用结构体来达到面向对象的目的。类似于 typescript 的 interfece，golang 为强类型语言，每个值的引用，函数的参数及返回值都必须定义结构体规范数据类型。</li>
+<li>成员变量：golang 中没有 public 和 private 关键字，定义私有变量和公共变量的方法是首字母的大小写区分</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Hour <span class="type">int</span>    <span class="comment">//公共变量</span></span><br><span class="line">    minute <span class="type">int</span>  <span class="comment">//私有变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="结构体的使用流程"><a href="#结构体的使用流程" class="headerlink" title="结构体的使用流程"></a>结构体的使用流程</h2><ul>
+<li>定义结构体</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基本实例化</li>
+</ul>
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> h1 house</span><br><span class="line">h1.size = <span class="number">130</span></span><br><span class="line">h1.style = <span class="string">&quot;中国风&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, h1) <span class="comment">// &#123;130 0 中国风&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v&quot;</span>, h1)  <span class="comment">// main.house&#123;size:130, price:0, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">fmt.Println(h1.size)   <span class="comment">// 130</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>匿名的结构体（匿名的结构体可以定义临时结构体）<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> family <span class="keyword">struct</span> &#123;</span><br><span class="line">	Mom <span class="type">string</span></span><br><span class="line">	Dad <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line">family.Mom = <span class="string">&quot;Mommy&quot;</span></span><br><span class="line">family.Dad = <span class="string">&quot;Daddy&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, family)  <span class="comment">// &#123;Mommy Daddy&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, family) <span class="comment">// struct &#123; Mom string; Dad string &#125;&#123;Mom:&quot;Mommy&quot;, Dad:&quot;Daddy&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>结构体指针<br>使用new关键字<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p1 := <span class="built_in">new</span>(house)</span><br><span class="line">p1.style = <span class="string">&quot;欧式&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;欧式&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+使用地址符&amp;<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p2 := &amp;house&#123;&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, p2)  <span class="comment">// *main.house</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p2) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
+<li>构造函数<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style       <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 返回结构体指针</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newHouse</span><span class="params">(size, price <span class="type">float64</span>, style <span class="type">string</span>)</span></span> *house &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;house&#123;</span><br><span class="line">		size:  size,</span><br><span class="line">		price: price,</span><br><span class="line">		style: style,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := newHouse(<span class="number">100</span>, <span class="number">80</span>, <span class="string">&quot;中国风&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:100, price:80, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="golang的指针-amp-和"><a href="#golang的指针-amp-和" class="headerlink" title="golang的指针 &amp;和*"></a>golang的指针 &amp;和*</h2>经常会见到: p . <em>p , &amp;p 三个符号<br>p是一个指针变量的名字，表示此指针变量指向的内存地址，如果使用%p来输出的话，它将是一个16进制数。而</em>p表示此指针指向的内存地址中存放的内容，一般是一个和指针类型一致的变量或者常量。<br>而我们知道，&amp;是取地址运算符，&amp;p就是取指针p的地址。等会，怎么又来了个地址，它到底和p有什么区别？区别在于，指针p同时也是个变量，既然是变量，编译器肯定要为其分配内存地址，就像程序中定义了一个int型的变量i，编译器要为其分配一块内存空间一样。而&amp;p就表示编译器为变量p分配的内存地址，而因为p是一个指针变量，这种特殊的身份注定了它要指向另外一个内存地址，程序员按照程序的需要让它指向一个内存地址，这个它指向的内存地址就用p表示。而且，p指向的地址中的内容就用*p表示。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
   </entry>
   <entry>
     <title>gozero</title>
@@ -212,36 +242,6 @@
       </categories>
   </entry>
   <entry>
-    <title>golang结构体</title>
-    <url>/2021/09/26/golangstruct/</url>
-    <content><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
-<li>golang 中没有类的概念，所以使用结构体来达到面向对象的目的。类似于 typescript 的 interfece，golang 为强类型语言，每个值的引用，函数的参数及返回值都必须定义结构体规范数据类型。</li>
-<li>成员变量：golang 中没有 public 和 private 关键字，定义私有变量和公共变量的方法是首字母的大小写区分</li>
-</ul>
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> A <span class="keyword">struct</span> &#123;</span><br><span class="line">    Hour <span class="type">int</span>    <span class="comment">//公共变量</span></span><br><span class="line">    minute <span class="type">int</span>  <span class="comment">//私有变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="结构体的使用流程"><a href="#结构体的使用流程" class="headerlink" title="结构体的使用流程"></a>结构体的使用流程</h2><ul>
-<li>定义结构体</li>
-</ul>
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style <span class="type">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>基本实例化</li>
-</ul>
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> h1 house</span><br><span class="line">h1.size = <span class="number">130</span></span><br><span class="line">h1.style = <span class="string">&quot;中国风&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, h1) <span class="comment">// &#123;130 0 中国风&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v&quot;</span>, h1)  <span class="comment">// main.house&#123;size:130, price:0, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">fmt.Println(h1.size)   <span class="comment">// 130</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>匿名的结构体（匿名的结构体可以定义临时结构体）<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> family <span class="keyword">struct</span> &#123;</span><br><span class="line">	Mom <span class="type">string</span></span><br><span class="line">	Dad <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line">family.Mom = <span class="string">&quot;Mommy&quot;</span></span><br><span class="line">family.Dad = <span class="string">&quot;Daddy&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%v\n&quot;</span>, family)  <span class="comment">// &#123;Mommy Daddy&#125;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, family) <span class="comment">// struct &#123; Mom string; Dad string &#125;&#123;Mom:&quot;Mommy&quot;, Dad:&quot;Daddy&quot;&#125;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>结构体指针<br>使用new关键字<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p1 := <span class="built_in">new</span>(house)</span><br><span class="line">p1.style = <span class="string">&quot;欧式&quot;</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;欧式&quot;&#125;</span></span><br></pre></td></tr></table></figure>
-使用地址符&amp;<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line">p2 := &amp;house&#123;&#125;</span><br><span class="line">fmt.Printf(<span class="string">&quot;%T\n&quot;</span>, p2)  <span class="comment">// *main.house</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p2) <span class="comment">// &amp;main.house&#123;size:0, price:0, style:&quot;&quot;&#125;</span></span><br></pre></td></tr></table></figure></li>
-<li>构造函数<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> house <span class="keyword">struct</span> &#123;</span><br><span class="line">	size, price <span class="type">float64</span></span><br><span class="line">	style       <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> 返回结构体指针</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">newHouse</span><span class="params">(size, price <span class="type">float64</span>, style <span class="type">string</span>)</span></span> *house &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;house&#123;</span><br><span class="line">		size:  size,</span><br><span class="line">		price: price,</span><br><span class="line">		style: style,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	p1 := newHouse(<span class="number">100</span>, <span class="number">80</span>, <span class="string">&quot;中国风&quot;</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, p1) <span class="comment">// &amp;main.house&#123;size:100, price:80, style:&quot;中国风&quot;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="golang的指针-amp-和"><a href="#golang的指针-amp-和" class="headerlink" title="golang的指针 &amp;和*"></a>golang的指针 &amp;和*</h2>经常会见到: p . <em>p , &amp;p 三个符号<br>p是一个指针变量的名字，表示此指针变量指向的内存地址，如果使用%p来输出的话，它将是一个16进制数。而</em>p表示此指针指向的内存地址中存放的内容，一般是一个和指针类型一致的变量或者常量。<br>而我们知道，&amp;是取地址运算符，&amp;p就是取指针p的地址。等会，怎么又来了个地址，它到底和p有什么区别？区别在于，指针p同时也是个变量，既然是变量，编译器肯定要为其分配内存地址，就像程序中定义了一个int型的变量i，编译器要为其分配一块内存空间一样。而&amp;p就表示编译器为变量p分配的内存地址，而因为p是一个指针变量，这种特殊的身份注定了它要指向另外一个内存地址，程序员按照程序的需要让它指向一个内存地址，这个它指向的内存地址就用p表示。而且，p指向的地址中的内容就用*p表示。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>golang</category>
-      </categories>
-  </entry>
-  <entry>
     <title>windows配置golang环境</title>
     <url>/2021/08/09/gozerolern/</url>
     <content><![CDATA[<ol>
@@ -255,6 +255,20 @@
 ]]></content>
       <categories>
         <category>golang</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>js的new关键字实现</title>
+    <url>/2022/10/11/howNew/</url>
+    <content><![CDATA[<h2 id="new的原理"><a href="#new的原理" class="headerlink" title="new的原理"></a>new的原理</h2><ul>
+<li>创建一个新的对象</li>
+<li>添加弗雷属性到新对象并且初始化</li>
+<li>继承父类原型方法，初始化，保存方法的执行结果</li>
+<li>如果执行结果有返回值并且为一个对象，返回结果，否则返回新创建的对象</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">_new</span>(<span class="params">obj, ...rest</span>)&#123;</span><br><span class="line">  <span class="comment">// 基于obj的原型创建一个新的对象</span></span><br><span class="line">  <span class="keyword">const</span> newObj = <span class="title class_">Object</span>.<span class="title function_">create</span>(obj.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加属性到新创建的newObj上, 并获取obj函数执行的结果.</span></span><br><span class="line">  <span class="keyword">const</span> result = obj.<span class="title function_">apply</span>(newObj, rest);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果执行结果有返回值并且是一个对象, 返回执行的结果, 否则, 返回新创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> result === <span class="string">&#x27;object&#x27;</span> ? result : newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>web前端</category>
       </categories>
   </entry>
   <entry>
@@ -280,20 +294,6 @@
 ]]></content>
       <categories>
         <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>js的new关键字实现</title>
-    <url>/2022/10/11/howNew/</url>
-    <content><![CDATA[<h2 id="new的原理"><a href="#new的原理" class="headerlink" title="new的原理"></a>new的原理</h2><ul>
-<li>创建一个新的对象</li>
-<li>添加弗雷属性到新对象并且初始化</li>
-<li>继承父类原型方法，初始化，保存方法的执行结果</li>
-<li>如果执行结果有返回值并且为一个对象，返回结果，否则返回新创建的对象</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">_new</span>(<span class="params">obj, ...rest</span>)&#123;</span><br><span class="line">  <span class="comment">// 基于obj的原型创建一个新的对象</span></span><br><span class="line">  <span class="keyword">const</span> newObj = <span class="title class_">Object</span>.<span class="title function_">create</span>(obj.<span class="property"><span class="keyword">prototype</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加属性到新创建的newObj上, 并获取obj函数执行的结果.</span></span><br><span class="line">  <span class="keyword">const</span> result = obj.<span class="title function_">apply</span>(newObj, rest);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果执行结果有返回值并且是一个对象, 返回执行的结果, 否则, 返回新创建的对象</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> result === <span class="string">&#x27;object&#x27;</span> ? result : newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>web前端</category>
       </categories>
   </entry>
   <entry>
@@ -518,6 +518,23 @@
       </tags>
   </entry>
   <entry>
+    <title>webgl</title>
+    <url>/2021/12/23/webgl/</url>
+    <content><![CDATA[<h2 id="什么是webgl"><a href="#什么是webgl" class="headerlink" title="什么是webgl"></a>什么是webgl</h2><ul>
+<li>webgl是一种3D绘图标准，把javascript和opengl结合在一起，铜鼓opengl es2.0的一个javascript绑定，通过使用html5的canvas进行绘制。</li>
+<li>webgl的本质是基于光栅化的api，webgl只关注两个方面，矩阵的坐标和投影矩阵的颜色，使用webgl的程序的任务就是实现带有投影矩阵的坐标和颜色的webgl对象</li>
+<li>3D绘图是由三部分组成，光照，摄像机，场景。webgl也是一样</li>
+<li>webgl可以绘制的图形为点,线,三角形，所有复杂的几何图形都是由三角形组成</li>
+<li>webgl绘图的流程，获取顶点坐标-&gt;绘制顶点数组对象-&gt;顶点着色器-&gt;片元着色器。</li>
+</ul>
+<h2 id="创建第一个webgl视图"><a href="#创建第一个webgl视图" class="headerlink" title="创建第一个webgl视图"></a>创建第一个webgl视图</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#glcanvas&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化WebGL上下文</span></span><br><span class="line">  <span class="keyword">const</span> gl = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确认WebGL支持性</span></span><br><span class="line">  <span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用完全不透明的黑色清除所有图像</span></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">  <span class="comment">// 用上面指定的颜色清除缓冲区</span></span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结合MDN和three.js慢慢学习</p>
+]]></content>
+      <tags>
+        <tag>webgl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>比较vue和react</title>
     <url>/2021/08/09/vuevsreact/</url>
     <content><![CDATA[<h2 id="VUE和react比较"><a href="#VUE和react比较" class="headerlink" title="VUE和react比较"></a>VUE和react比较</h2><h4 id="单页面应用的发展"><a href="#单页面应用的发展" class="headerlink" title="单页面应用的发展"></a>单页面应用的发展</h4><ul>
@@ -621,23 +638,6 @@
 ]]></content>
       <tags>
         <tag>脚手架</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>webgl</title>
-    <url>/2021/12/23/webgl/</url>
-    <content><![CDATA[<h2 id="什么是webgl"><a href="#什么是webgl" class="headerlink" title="什么是webgl"></a>什么是webgl</h2><ul>
-<li>webgl是一种3D绘图标准，把javascript和opengl结合在一起，铜鼓opengl es2.0的一个javascript绑定，通过使用html5的canvas进行绘制。</li>
-<li>webgl的本质是基于光栅化的api，webgl只关注两个方面，矩阵的坐标和投影矩阵的颜色，使用webgl的程序的任务就是实现带有投影矩阵的坐标和颜色的webgl对象</li>
-<li>3D绘图是由三部分组成，光照，摄像机，场景。webgl也是一样</li>
-<li>webgl可以绘制的图形为点,线,三角形，所有复杂的几何图形都是由三角形组成</li>
-<li>webgl绘图的流程，获取顶点坐标-&gt;绘制顶点数组对象-&gt;顶点着色器-&gt;片元着色器。</li>
-</ul>
-<h2 id="创建第一个webgl视图"><a href="#创建第一个webgl视图" class="headerlink" title="创建第一个webgl视图"></a>创建第一个webgl视图</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> canvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#glcanvas&quot;</span>);</span><br><span class="line">  <span class="comment">// 初始化WebGL上下文</span></span><br><span class="line">  <span class="keyword">const</span> gl = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;webgl&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 确认WebGL支持性</span></span><br><span class="line">  <span class="keyword">if</span> (!gl) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;无法初始化WebGL，你的浏览器、操作系统或硬件等可能不支持WebGL。&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用完全不透明的黑色清除所有图像</span></span><br><span class="line">  gl.<span class="title function_">clearColor</span>(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">  <span class="comment">// 用上面指定的颜色清除缓冲区</span></span><br><span class="line">  gl.<span class="title function_">clear</span>(gl.<span class="property">COLOR_BUFFER_BIT</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结合MDN和three.js慢慢学习</p>
-]]></content>
-      <tags>
-        <tag>webgl</tag>
       </tags>
   </entry>
 </search>
